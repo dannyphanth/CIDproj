@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const caseSchema = new mongoose.Schema({
     car_vin: {
-        type: Number,
+        type: String,
         required: true
     },
 
@@ -22,7 +22,7 @@ const caseSchema = new mongoose.Schema({
     },
 
     crash_date: {
-        type: Date,
+        type: String,
         required: true,
     },
 

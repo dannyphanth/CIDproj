@@ -13,6 +13,7 @@ const app = express();
 const casesRoute = require('./routes/crashCases');
 
 
+
 //MIDDLEWARES
 // app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors());
@@ -20,15 +21,15 @@ app.use(express.json());
 
 app.use('/cases', casesRoute);
 
-app.get("/", (req, res) => {
-    try {
-        res.send("Welcome to our api...")
+// app.get("/", (req, res) => {
+//     try {
+//         res.send("Welcome to our api...")
 
-    } catch (error) {
-        console.error('Error submitting data:', error);
-        res.status(500).json({ error: 'An error occurred while submitting data' });
-    }
-})
+//     } catch (error) {
+//         console.error('Error submitting data:', error);
+//         res.status(500).json({ error: 'An error occurred while submitting data' });
+//     }
+// })
 
 
 //Connecting to MongoDB 

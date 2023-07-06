@@ -10,7 +10,9 @@ const Table = ({ data }) => {
                 </tr>
                 {data.map((item) => (
                     <tr key={item.id}>
-                        <td>{item.car_vin}</td>
+                        <td>
+                            <a href={`/caseInfo/${item.car_vin}`}>{item.car_vin} </a>
+                        </td>
                         <td>{item.car_make}</td>
                         <td>{item.car_model}</td>
                         <td>{item.crash_date}</td>

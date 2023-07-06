@@ -4,7 +4,6 @@ function ListSearchPage() {
     return (
         <>
             <Header />
-            <h1> List Search Page...</h1>
             <ListSearchForm />
         </>
     )

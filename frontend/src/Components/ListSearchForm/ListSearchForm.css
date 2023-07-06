@@ -1,0 +1,43 @@
+.search {
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 20px;
+    box-shadow: 9 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    margin: 50px 0px;
+    border-spacing: 15px;
+    color: #444;
+
+    background-color: #9bcafd;
+    border-Radius: 8px;
+    box-shadow: 9 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 30vh;
+    margin: 2rem;
+    border: 2px solid black;
+}
+
+
+tr {
+    margin-bottom: 20px;
+}
+
+th {
+    width: 250px;
+    text-align: left;
+    font-size: 20px;
+
+}
+
+td {
+    text-align: left;
+    width: 250px;
+    font-size: 20px;
+
+}

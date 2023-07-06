@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
+import "./ListSearchForm.css";
 import axios from 'axios';
+import Table from './Table';
 
 function ListSearchForm() {
 
-    // const { carVin, setCarVin } = useState({});
-    // const { carMake, setCarMake } = useState({});
-    // const { carModel, setCarModel } = useState({});
-    // const { crashDate, setCrashDate } = useState({});
-
     const [data, setData] = useState([]);
+    const [query, setQuery] = useState("");
 
     useEffect(() => {
         //Fetch data from API
@@ -22,34 +20,24 @@ function ListSearchForm() {
             });
     }, []);
 
-
+    //Searches the keys in data model and checks to see if value matches user search
+    const keys = ["car_vin", "car_make", "car_model", "crash_date"];
+    const search = (data) => {
+        return data.filter((item) =>
+            keys.some((key) => item[key].toLowerCase().includes(query))
+        );
+    }
 
     return (
 
         <div>
-            <h2>Data Table</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Vin</th>
-                        <th>Make</th>
-                        <th>Model</th>
-                        <th>Year</th>
-                        <th>Crash Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.car_vin}</td>
-                            <td>{item.car_make}</td>
-                            <td>{item.car_model}</td>
-                            <td>{item.car_year}</td>
-                            <td>{item.crash_date}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <input
+                type="text"
+                placeholder="Search..."
+                className="search"
+                onChange={(e) => setQuery(e.target.value.toLowerCase())}
+            />
+            <Table data={search(data)} />
         </div>
 
     )

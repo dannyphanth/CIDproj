@@ -1,0 +1,14 @@
+.Header {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    max-height: 20vh;
+    padding-bottom: 0;
+}
+
+.Title {
+    color: black;
+    padding-left: 3rem;
+    font-weight: 50%;
+    font-size: 2rem;
+}

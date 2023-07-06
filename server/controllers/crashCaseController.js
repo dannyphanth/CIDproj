@@ -59,6 +59,25 @@ const updateCrashCase = async (req, res) => {
 
 const deleteCrashCase = async (req, res) => {
 
+    try {
+        const { id } = req.params; // Assuming the ID is passed as a URL parameter
+
+        // Find the crash case by ID and delete it
+        const deletedCrashCase = await crashCasemodel.findByIdAndDelete(id);
+
+        // If the crash case is not found, return an error response
+        if (!deletedCrashCase) {
+            return res.status(404).json({ error: 'Crash case not found' });
+        }
+
+        // Return a success response
+        res.json({ message: 'Crash case deleted successfully' });
+    } catch (error) {
+        // Handle any errors that occurred during the database operation
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+
 };
 
-module.exports = { createCrashCase, getAllCrashCases, getCrashCaseById };
+module.exports = { createCrashCase, getAllCrashCases, getCrashCaseById, deleteCrashCase };

@@ -1,6 +1,8 @@
 import Header from "../../Components/Header/Header";
 import HomeFilter from "../../Components/HomeFilter/HomeFilter";
-import HomeListCases from "../../Components/HomeListCases/HomeLIstCases";
+import HomeListCases from "../../Components/HomeListCases/HomeListCases";
+import HomeAddCase from "../../Components/HomeAddCase/HomeAddCase";
+
 function HomePage() {
 
     return (
@@ -8,6 +10,7 @@ function HomePage() {
             <Header />
             <HomeFilter />
             <HomeListCases />
+            <HomeAddCase />
         </>
     )
 

@@ -30,7 +30,7 @@ export const SideBarData = () => {
             subNav: [
                 {
                     title: 'Crash Summary',
-                    path: `/caseInfo/:caseNumber/Summary/`,
+                    path: `/caseInfo/:caseNumber/Summary`,
                     icon: <IoIcons.IoIosPaper />,
                 },
                 {

@@ -4,6 +4,7 @@ import FilterSearchPage from './Views/FilterSearchPage/FilterSearchPage';
 import ListSearchPage from './Views/ListSearchPage/ListSearchPage';
 import CaseInfoPage from './Views/CaseInfoPage/CaseInfoPage';
 import AddCasePage from './Views/AddCasePage/AddCasePage';
+import CaseInfoRoutes from './CaseInfoRoutes';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ function App() {
     <Router>
       <div className='App'>
         <Routes >
+
           <Route path="/" element={<HomePage />} />
           <Route path="/filter-search" element={<FilterSearchPage />} />
 
@@ -19,8 +21,10 @@ function App() {
           <Route path="/caseInfo/:caseNumber" element={<CaseInfoPage />} />
 
           <Route path="/addCase" element={<AddCasePage />} />
-
         </Routes>
+
+        <CaseInfoRoutes />
+
       </div>
     </Router>
   );

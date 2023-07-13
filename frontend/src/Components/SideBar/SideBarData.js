@@ -30,12 +30,12 @@ export const SideBarData = () => {
             subNav: [
                 {
                     title: 'Crash Summary',
-                    path: `${previousPath}/Summary`,
+                    path: `/caseInfo/:caseNumber/Summary/`,
                     icon: <IoIcons.IoIosPaper />,
                 },
                 {
                     title: 'Scene Diagram',
-                    path: `${previousPath}/CrashSummary/SceneDiagram`,
+                    path: `/caseInfo/:caseNumber/SceneDiagram`,
                     icon: <IoIcons.IoIosPaper />,
                 }
             ]
@@ -50,17 +50,17 @@ export const SideBarData = () => {
             subNav: [
                 {
                     title: 'Identification',
-                    path: `${previousPath}/Vehicle/Identification`,
+                    path: `/caseInfo/:caseNumber/Identification`,
                     icon: <IoIcons.IoIosPaper />,
                 },
                 {
                     title: 'Specificiations',
-                    path: `${previousPath}/Vehicle/Specifications`,
+                    path: `/caseInfo/:caseNumber/Specifications`,
                     icon: <IoIcons.IoIosPaper />,
                 },
                 {
                     title: 'Delta V',
-                    path: `${previousPath}/Vehicle/DeltaV`,
+                    path: `/caseInfo/:caseNumber/DeltaV`,
                     icon: <IoIcons.IoIosPaper />,
                 }
             ]
@@ -75,12 +75,12 @@ export const SideBarData = () => {
             subNav: [
                 {
                     title: 'Crash Scene',
-                    path: `${previousPath}/Images/CrashScene`,
+                    path: `/caseInfo/:caseNumber/CrashScene`,
                     icon: <IoIcons.IoIosPaper />,
                 },
                 {
                     title: 'Vehicle Images',
-                    path: `${previousPath}/Images/VehicleImages`,
+                    path: `/caseInfo/:caseNumber/VehicleImages`,
                     icon: <IoIcons.IoIosPaper />,
                 }
             ]

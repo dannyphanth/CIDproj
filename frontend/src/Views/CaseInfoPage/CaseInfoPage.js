@@ -7,8 +7,8 @@ const CaseInfoPage = () => {
     return (
         <>
             <SideBar caseNumber={caseNumber} />
-
         </>
+
 
     )
 }

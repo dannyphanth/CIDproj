@@ -33,7 +33,7 @@ width: 250px;
 height: 100vh;
 display: flex;
 justify-content: center;
-position: fixed;
+
 top: 0;
 left: ${({ sideBar }) => (sideBar ? '0' : '-100%')};
 transition: 350ms;
@@ -55,16 +55,16 @@ const SideBar = ({ caseNumber }) => {
     return (
         <>
             <IconContext.Provider value={{ color: '#fff' }}>
-                <Nav>
+                {/* <Nav>
                     <NavIcon to="#">
                         <FaIcons.FaBars onClick={showSideBar} />
                     </NavIcon>
-                </Nav>
+                </Nav> */}
                 <SideBarNav sideBar={sideBar}>
                     <SideBarWrap >
-                        <NavIcon to="#">
+                        {/* <NavIcon to="#">
                             <AiIcons.FaWindowClose onClick={showSideBar} />
-                        </NavIcon>
+                        </NavIcon> */}
                         {SideBarData(caseNumber).map((item, index) => {
                             return <SubMenu item={item} key={index} />
                         })}

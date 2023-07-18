@@ -8,16 +8,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 
-export const SideBarData = () => {
-
-    const location = useLocation();
-    const [previousPath, setPreviousPath] = useState('');
-
-    console.log(location);
-
-    useEffect(() => {
-        setPreviousPath(location.pathname);
-    }, [location]);
+export const SideBarData = (caseNumber) => {
 
     return [
 
@@ -30,12 +21,12 @@ export const SideBarData = () => {
             subNav: [
                 {
                     title: 'Crash Summary',
-                    path: `/caseInfo/:caseNumber/Summary`,
+                    path: `/caseInfo/${caseNumber}/Summary`,
                     icon: <IoIcons.IoIosPaper />,
                 },
                 {
                     title: 'Scene Diagram',
-                    path: `/caseInfo/:caseNumber/SceneDiagram`,
+                    path: `/caseInfo/${caseNumber}/SceneDiagram`,
                     icon: <IoIcons.IoIosPaper />,
                 }
             ]
@@ -50,17 +41,17 @@ export const SideBarData = () => {
             subNav: [
                 {
                     title: 'Identification',
-                    path: `/caseInfo/:caseNumber/Identification`,
+                    path: `/caseInfo/${caseNumber}/Identification`,
                     icon: <IoIcons.IoIosPaper />,
                 },
                 {
                     title: 'Specificiations',
-                    path: `/caseInfo/:caseNumber/Specifications`,
+                    path: `/caseInfo/${caseNumber}/Specifications`,
                     icon: <IoIcons.IoIosPaper />,
                 },
                 {
                     title: 'Delta V',
-                    path: `/caseInfo/:caseNumber/DeltaV`,
+                    path: `/caseInfo/${caseNumber}/DeltaV`,
                     icon: <IoIcons.IoIosPaper />,
                 }
             ]
@@ -75,12 +66,12 @@ export const SideBarData = () => {
             subNav: [
                 {
                     title: 'Crash Scene',
-                    path: `/caseInfo/:caseNumber/CrashScene`,
+                    path: `/caseInfo/${caseNumber}/CrashScene`,
                     icon: <IoIcons.IoIosPaper />,
                 },
                 {
                     title: 'Vehicle Images',
-                    path: `/caseInfo/:caseNumber/VehicleImages`,
+                    path: `/caseInfo/${caseNumber}/VehicleImages`,
                     icon: <IoIcons.IoIosPaper />,
                 }
             ]

@@ -46,7 +46,7 @@ width: 100%;
 
 
 
-const SideBar = () => {
+const SideBar = ({ caseNumber }) => {
 
     const [sideBar, setSideBar] = useState(true)
 
@@ -65,7 +65,7 @@ const SideBar = () => {
                         <NavIcon to="#">
                             <AiIcons.FaWindowClose onClick={showSideBar} />
                         </NavIcon>
-                        {SideBarData().map((item, index) => {
+                        {SideBarData(caseNumber).map((item, index) => {
                             return <SubMenu item={item} key={index} />
                         })}
                     </SideBarWrap>

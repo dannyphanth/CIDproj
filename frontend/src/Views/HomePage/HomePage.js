@@ -7,7 +7,9 @@ function HomePage() {
 
     return (
         <>
-            <Header />
+            <Header
+                title="CID Case Viewer"
+            />
             <HomeFilter />
             <HomeListCases />
             <HomeAddCase />

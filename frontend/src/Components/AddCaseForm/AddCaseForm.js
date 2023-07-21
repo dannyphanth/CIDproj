@@ -13,13 +13,16 @@ import axios from 'axios'
 
 function AddCaseForm() {
 
+
     const [caseNumber, setCaseNumber] = useState("");
+    const [crashDate, setCrashDate] = useState("");
     const [caseSummary, setCaseSummary] = useState("")
+
     const [vin, setVin] = useState("")
     const [carMake, setCarMake] = useState("");
     const [carModel, setCarModel] = useState("");
     const [modelYear, setModelYear] = useState("");
-    const [crashDate, setCrashDate] = useState("");
+
 
     const [generalAreaOfDamage, setGeneralAreaOfDamage] = useState("");
     const [objectContactedCategory, setObjectContactedCategory] = useState("");
@@ -36,39 +39,39 @@ function AddCaseForm() {
     const [cdcExtent, setCdcExtent] = useState("")
     const [cdcSummary, setCdcSummary] = useState("")
 
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Perform database submission or API call with the form data
 
         try {
+
             const formData = {
-                //Change car_vin to caseNumber in schema
                 case_number: caseNumber,
-                car_vin: vin,
-                case_summary: caseSummary,
                 crash_date: crashDate,
-                car_make: carMake,
-                car_model: carModel,
-                car_year: modelYear,
+                case_summary: caseSummary,
+                vehicles: [
+                    {
+                        vin: vin,
+                        car_make: carMake,
+                        model: carModel,
+                        year: modelYear,
+                        general_area_of_damage: generalAreaOfDamage,
+                        object_contacted_category: objectContactedCategory,
+                        force_direction: forceDirection,
+                        end_shift: endShift,
+                        clock: cdcClock,
+                        over_underride: overUnderride,
+                        heading_angle: headingAngle,
+                        deformation_location: deformationLocation,
+                        long_lateral: longLateral,
+                        vertical_lateral: verticalLateral,
+                        distribution: cdcDistribution,
+                        extent: cdcExtent,
+                        cdc_summary: cdcSummary,
+                    },
+                    // Add more vehicles to the array if needed
+                ],
 
-                //CDC
-                general_area_of_damage: generalAreaOfDamage,
-                object_contacted_caategory: objectContactedCategory,
-                force_direction: forceDirection,
-                end_shift: endShift,
-                clock: cdcClock,
-                over_underride: overUnderride,
-                heading_angle: headingAngle,
-                deformation_location: deformationLocation,
-                long_lateral: longLateral,
-                vertical_lateral: verticalLateral,
-                distribution: cdcDistribution,
-                extent: cdcExtent,
-                cdc_summary: cdcSummary
-
-                //vehiclesInvolved: vehicleArr
             };
 
 
@@ -76,8 +79,9 @@ function AddCaseForm() {
 
             // Reset form inputs
             setCaseNumber('');
-            setVin('');
             setCrashDate('');
+
+            setVin('');
             setCarMake('');
             setCarModel('');
             setModelYear('');
@@ -97,7 +101,7 @@ function AddCaseForm() {
             setCdcExtent('');
             setCdcSummary('');
 
-            //setVehicles([])
+
         } catch (error) {
             console.error('Error: ', error);
         }
@@ -108,7 +112,7 @@ function AddCaseForm() {
     return (
 
 
-        <Form onSubmit={handleSubmit} className=" border border-black-500 mx-12">
+        < Form onSubmit={handleSubmit} className=" border border-black-500 mx-12" >
 
 
             <div className="flex justify-center">
@@ -119,7 +123,7 @@ function AddCaseForm() {
 
             {/* Case Number and Crash Date */}
             <div className="flex flex-wrap justify-center ">
-                <FormGroup className="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 p-2 pl-0 justify-start">
+                <FormGroup className="w-full sm:w-4/5 md:w-1/2 lg:w-1/3 p-2 pl-0 justify-start">
                     <Label for="caseNumber" className="flex justify-start">Case Number</Label>
                     <Input
                         type="text"
@@ -130,7 +134,7 @@ function AddCaseForm() {
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                 </FormGroup>
-                <FormGroup className="w-full lg:w-1/6 p-2">
+                <FormGroup className="w-full sm:w-4/5 md:w-1/6 lg:w-1/6 p-2">
                     <Label for="crashDate" className="flex justify-start">Crash Date</Label>
                     <Input
                         type="date"
@@ -145,7 +149,7 @@ function AddCaseForm() {
             </div>
 
             {/* Case Summary */}
-            <FormGroup className="w-full sm:w-1/2 md:w-1/2 lg:w-1/2 p-2 mx-auto">
+            <FormGroup className="w-full sm:w-4/5 md:w-1/2 lg:w-1/2 p-2 mx-auto">
                 <Label for="Summary" className="flex justify-start">Case Summary</Label>
                 <textarea
                     type="text"
@@ -160,10 +164,11 @@ function AddCaseForm() {
 
             {/* //Submit vehicle num here */}
 
+
             <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-2 ">
                 {/* First Row */}
                 <div className="col-span-1 p-2 flex justify-center">
-                    <FormGroup className="w-full sm:w-1/2 md:w-1/2 lg:w-3/5">
+                    <FormGroup className="w-full sm:w-4/5 md:w-4/5 lg:w-3/5">
                         <Label for="Vin" className="flex justify-start">Vin</Label>
                         <Input
                             type="text"
@@ -176,7 +181,7 @@ function AddCaseForm() {
                     </FormGroup>
                 </div>
                 <div className="col-span-1 p-2 flex justify-center">
-                    <FormGroup className="w-full sm:w-1/2 md:w-1/2 lg:w-3/5">
+                    <FormGroup className="w-full sm:w-4/5 md:w-4/5 lg:w-3/5">
                         <Label for="carMake" className="flex justify-start">Car Make</Label>
                         <Input
                             type="text"
@@ -188,10 +193,9 @@ function AddCaseForm() {
                         />
                     </FormGroup>
                 </div>
-
                 {/* Second Row */}
                 <div className="col-span-1 p-2 flex justify-center">
-                    <FormGroup className="w-full sm:w-1/2 md:w-1/2 lg:w-3/5">
+                    <FormGroup className="w-full sm:w-4/5 md:w-4/5 lg:w-3/5">
                         <Label for="carModel" className="flex justify-start">Car Model</Label>
                         <Input
                             type="text"
@@ -204,7 +208,7 @@ function AddCaseForm() {
                     </FormGroup>
                 </div>
                 <div className="col-span-1 p-2 flex justify-center">
-                    <FormGroup className="w-full sm:w-1/2 md:w-1/2 lg:w-3/5">
+                    <FormGroup className="w-full sm:w-4/5 md:w-4/5 lg:w-3/5">
                         <Label for="modelYear" className="flex justify-start">Model Year</Label>
                         <Input
                             type="text"
@@ -221,13 +225,11 @@ function AddCaseForm() {
 
 
 
-
             <div className="flex justify-center">
                 <h1 className="flex justify-center border-bottom w-1/2 text-2xl text-center font-semibold my-4">
                     CDC
                 </h1>
             </div>
-
 
             <div className="grid lg:grid-cols-3">
                 {/* Row 1 */}
@@ -270,7 +272,6 @@ function AddCaseForm() {
                         />
                     </FormGroup>
                 </div>
-
                 {/* Row 2 */}
                 <div className="flex justify-center">
                     <FormGroup className="w-full sm:w-4/5 p-2">
@@ -311,7 +312,6 @@ function AddCaseForm() {
                         />
                     </FormGroup>
                 </div>
-
                 {/* Row 3 */}
                 <div className="flex justify-center">
                     <FormGroup className="w-full sm:w-4/5 p-2">
@@ -352,7 +352,6 @@ function AddCaseForm() {
                         />
                     </FormGroup>
                 </div>
-
                 {/* Row 4 */}
                 <div className="flex justify-center">
                     <FormGroup className="w-full sm:w-4/5 p-2">
@@ -393,9 +392,7 @@ function AddCaseForm() {
                         />
                     </FormGroup>
                 </div>
-
                 {/* Row 5 */}
-
                 <div className="flex justify-center">
                     <FormGroup className="w-full sm:w-4/5 p-2">
                         <Label for="input4" className="flex justify-start">Extent</Label>
@@ -422,8 +419,13 @@ function AddCaseForm() {
                         />
                     </FormGroup>
                 </div>
-
             </div>
+
+
+
+            <Button color="secondary" type="button" className="w-20 p-2 mt-4">
+                Add Another Vehicle
+            </Button>
 
             <Button color="primary" type="submit" className="w-20 p-2 mt-4">
                 Submit

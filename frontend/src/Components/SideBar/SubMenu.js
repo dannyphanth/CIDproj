@@ -6,12 +6,14 @@ const SideBarLink = styled(Link)`
 display: flex;
 color: #e1e9fc;
 justify-content: space-between;
-align-items: center;
 padding: 20px;
 list-style: none;
-height: 60px;
+
 text-decoration: none;
 font-size: 18px;
+
+
+
 
 &:hover{
     background: #252831;
@@ -26,20 +28,26 @@ margin-left: 16px;
 
 const DropdownLink = styled(Link)`
 background: #414757;
-height: 60px;
-padding-left: 3rem;
+
+padding-left: 2rem;
+padding-right: 1rem;
 display: flex;
 align-items: center;
+
 text-decoration: none;
 color: #f5f5f5;
-font-sze: 10px;
+
 
 &:hover {
     background: #632ce4;
     cursor: pointer;
 }
+`;
 
-`
+const IconWrapper = styled.div`
+  /* Prevent the icon from shrinking */
+  @apply flex-shrink-0;
+`;
 
 const SubMenu = ({ item }) => {
 
@@ -48,11 +56,11 @@ const SubMenu = ({ item }) => {
     const showSubnav = () => setSubnav(!subnav);
 
     return (
-        <>
-            <SideBarLink onClick={showSubnav}>
-                <div>
-                    {item.icon}
-                    <SideBarLabel>{item.title}</SideBarLabel>
+        <div>
+            <SideBarLink onClick={showSubnav} className="h-20 pb-4 lg:pb-0">
+                <div className="flex items-start items-center text-sm md:text-base lg:text-base ">
+                    <IconWrapper> {item.icon}</IconWrapper>
+                    <SideBarLabel className="text-start">{item.title}</SideBarLabel>
                 </div>
                 <div>
                     {item.subNav && subnav
@@ -65,13 +73,13 @@ const SubMenu = ({ item }) => {
             {subnav &&
                 item.subNav.map((item, index) => {
                     return (
-                        <DropdownLink to={item.path} key={index}>
+                        <DropdownLink className="items-center text-start text-sm md:text-base lg:text-base h-16" to={item.path} key={index}>
                             {item.icon}
                             <SideBarLabel>{item.title}</SideBarLabel>
                         </DropdownLink>
                     );
                 })}
-        </>
+        </div>
     );
 };
 

@@ -7,32 +7,31 @@ import { SideBarData } from './SideBarData';
 import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
 
-const Nav = styled.div` 
-background: #15171c;
-height: 80px;
-display: flex;
-justify-content: flex-start;
-align-items: center;
-position: fixed;
-top: 0;
-width: 100%;
-`;
+// const Nav = styled.div` 
+// background: #15171c;
+// height: 80px;
+// display: flex;
+// justify-content: flex-start;
+// align-items: center;
 
-const NavIcon = styled(Link)`
-margin-left 2rem;
-font-size: 2rem;
-height: 80px;
-display: flex;
-justify-content: flex-start;
-align-items: center;
-`;
+// `;
+
+// const NavIcon = styled(Link)`
+// margin-left 2rem;
+// font-size: 2rem;
+// height: 80px;
+// display: flex;
+// justify-content: flex-start;
+// align-items: center;
+// `;
 
 const SideBarNav = styled.nav`
 background: #15171c;
-width: 250px;
 height: 100vh;
 display: flex;
+
 justify-content: center;
+
 
 top: 0;
 left: ${({ sideBar }) => (sideBar ? '0' : '-100%')};
@@ -53,25 +52,25 @@ const SideBar = ({ caseNumber }) => {
     const showSideBar = () => setSideBar(!sideBar)
 
     return (
-        <>
-            <IconContext.Provider value={{ color: '#fff' }}>
-                {/* <Nav>
-                    <NavIcon to="#">
-                        <FaIcons.FaBars onClick={showSideBar} />
-                    </NavIcon>
-                </Nav> */}
-                <SideBarNav sideBar={sideBar}>
-                    <SideBarWrap >
-                        {/* <NavIcon to="#">
-                            <AiIcons.FaWindowClose onClick={showSideBar} />
-                        </NavIcon> */}
-                        {SideBarData(caseNumber).map((item, index) => {
-                            return <SubMenu item={item} key={index} />
-                        })}
-                    </SideBarWrap>
-                </SideBarNav>
-            </IconContext.Provider>
-        </>
+
+        <IconContext.Provider value={{ color: '#fff' }}>
+            {/* <Nav>
+                <NavIcon to="#">
+                    <FaIcons.FaBars onClick={showSideBar} />
+                </NavIcon>
+            </Nav> */}
+            <SideBarNav sideBar={sideBar} className="w-72 lg:flex-shrink-0">
+                <SideBarWrap >
+                    {/* <NavIcon to="#">
+                        <AiIcons.FaWindowClose onClick={showSideBar} />
+                    </NavIcon> */}
+                    {SideBarData(caseNumber).map((item, index) => {
+                        return <SubMenu item={item} key={index} />
+                    })}
+                </SideBarWrap>
+            </SideBarNav>
+        </IconContext.Provider>
+
     );
 };
 

@@ -10,14 +10,13 @@ const Table = ({ data }) => {
                             <th>Car Model</th>
                             <th>Crash Date</th>
                         </tr>
-                        {data.map((item) => (
-                            <tr key={item.id}>
+                        {data.map((cases, index) => (
+                            <tr key={cases.id}>
                                 <td>
-                                    <a href={`/caseInfo/${item.car_vin}`}>{item.car_vin} </a>
+                                    <a href={`/caseInfo/${cases.case_number}`}>{cases.case_number} </a>
                                 </td>
-                                <td>{item.car_make}</td>
-                                <td>{item.car_model}</td>
-                                <td>{item.crash_date}</td>
+                                <td>{cases.vehicles[index].make}</td>
+                                <td></td>
                             </tr>
                         ))}
                     </tbody>

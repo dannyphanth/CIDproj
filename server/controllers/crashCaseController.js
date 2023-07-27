@@ -3,14 +3,14 @@ const crashCasemodel = require('../models/CrashCase');
 
 const createCrashCase = async (req, res) => {
     try {
-        const { car_vin, car_make, car_model, car_year, crash_date } = req.body;
+        const { case_number, crash_date, case_summary, vehicles } = req.body;
 
         const CrashCase = new crashCasemodel({
-            car_vin,
-            car_make,
-            car_model,
-            car_year,
-            crash_date
+            case_number,
+            crash_date,
+            case_summary,
+            vehicles
+
         });
 
         await CrashCase.save();

@@ -92,8 +92,59 @@ const vehicleSchema = new mongoose.Schema({
     cdc_summary: {
         type: String,
         required: true,
-    }
+    },
 
+    //Delta V Data
+
+    DV_basis: {
+        type: String,
+        required: true,
+    },
+
+    DV_total: {
+        type: String,
+        required: true,
+    },
+
+    DV_long: {
+        type: String,
+        required: false,
+    },
+
+    DV_lateral: {
+        type: String,
+        required: false,
+    },
+
+    DV_energy_absorption: {
+        type: String,
+        required: false,
+    },
+
+    DV_impact_speed: {
+        type: String,
+        required: false,
+    },
+
+    DV_moment_arm: {
+        type: String,
+        required: false,
+    },
+
+    DV_barrier_equivalent_speed: {
+        type: String,
+        required: false,
+    },
+
+    DV_estimated_severity: {
+        type: String,
+        required: true,
+    },
+
+    DV_rank: {
+        type: String,
+        required: false,
+    }
 
 });
 

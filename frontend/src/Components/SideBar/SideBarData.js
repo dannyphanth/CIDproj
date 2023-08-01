@@ -4,11 +4,48 @@ import * as AiIcons from 'react-icons/ai'
 import * as IoIcons from 'react-icons/io'
 import * as RiIcons from 'react-icons/ri'
 
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-
+//import Data
+import { useData } from '../../CaseInfoDataContext'
 
 export const SideBarData = (caseNumber) => {
+
+    //Fetches caseinfo data from React's Context API
+    const { data } = useData();
+
+    //Filters all cases with case that matches caseNumber
+    const caseData = data.find((cases) => cases.case_number === caseNumber) || [];
+    // Extract the vehicles array from the caseData object
+    const vehicles = caseData.vehicles || [];
+
+    // Creates the sub-navigation for each vehicle
+    const vehicleSubNavs = vehicles.map((vehicle, index) => {
+        const vehicleIndex = index + 1;
+        return {
+            title: `Vehicle ${vehicleIndex}`,
+            icon: <AiIcons.AiFillHome />,
+            iconClosed: <RiIcons.RiArrowDownSFill />,
+            iconOpened: <RiIcons.RiArrowUpSFill />,
+            subNav: [
+                {
+                    title: 'Specifications',
+                    path: `/caseInfo/${caseNumber}/vehicle/${vehicleIndex}/Specifications`,
+                    icon: <IoIcons.IoIosPaper />,
+                },
+                {
+                    title: 'CDC Data',
+                    path: `/caseInfo/${caseNumber}/vehicle/${vehicleIndex}/CDCdata`,
+                    icon: <IoIcons.IoIosPaper />,
+                },
+                {
+                    title: 'Delta V',
+                    path: `/caseInfo/${caseNumber}/vehicle/${vehicleIndex}/DeltaV`,
+                    icon: <IoIcons.IoIosPaper />,
+                },
+            ],
+        };
+    });
+
+
 
     return [
 
@@ -32,30 +69,7 @@ export const SideBarData = (caseNumber) => {
             ]
         },
 
-        {
-            title: 'Vehicle',
-            // path: '/',
-            icon: <AiIcons.AiFillHome />,
-            iconClosed: <RiIcons.RiArrowDownSFill />,
-            iconOpened: <RiIcons.RiArrowUpSFill />,
-            subNav: [
-                {
-                    title: 'Identification',
-                    path: `/caseInfo/${caseNumber}/Identification`,
-                    icon: <IoIcons.IoIosPaper />,
-                },
-                {
-                    title: 'Specificiations',
-                    path: `/caseInfo/${caseNumber}/Specifications`,
-                    icon: <IoIcons.IoIosPaper />,
-                },
-                {
-                    title: 'Delta V',
-                    path: `/caseInfo/${caseNumber}/DeltaV`,
-                    icon: <IoIcons.IoIosPaper />,
-                }
-            ]
-        },
+        ...vehicleSubNavs,
 
         {
             title: 'Images',

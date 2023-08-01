@@ -7,10 +7,12 @@ function SummaryDisplay() {
 
     return (
         <div className="flex">
-
-            <SideBar caseNumber={caseNumber} />
-            <SummaryTable caseNumber={caseNumber} />
-
+            <div className="flex-0">
+                <SideBar caseNumber={caseNumber} />
+            </div>
+            <div className="flex-1">
+                <SummaryTable caseNumber={caseNumber} />
+            </div>
         </div>
     )
 }

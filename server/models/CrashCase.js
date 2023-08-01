@@ -156,7 +156,7 @@ const caseSchema = new mongoose.Schema({
     },
 
     crash_date: {
-        type: Date, // Use Date type for crash date
+        type: String, // Use Date type for crash date
         required: true,
     },
 

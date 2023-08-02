@@ -59,19 +59,19 @@ function SpecificationsTable({ caseNumber }) {
                     <dl className="divide-y divide-gray-200">
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900">Vin</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.vin}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.vin || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Make</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.make}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.make || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">Model</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.model}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.model || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Year</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.year}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.year || "Unknown"}</dd>
                         </div>
                     </dl>
                 ) : (<p>No vehicle data found for the caseNumber</p>)}
@@ -83,31 +83,31 @@ function SpecificationsTable({ caseNumber }) {
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Vehicle Type</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].VehicleType}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].VehicleType || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Manufacturer</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].Manufacturer}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].Manufacturer || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Body Class</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].BodyClass}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].BodyClass || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Series</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].Series}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].Series || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Plant Country</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].PlantCountry}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].PlantCountry || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Plant City</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].PlantCity}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].PlantCity || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Doors</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].Doors}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].Doors || "Unknown"}</dd>
                         </div>
                     </dl>
                 ) : (

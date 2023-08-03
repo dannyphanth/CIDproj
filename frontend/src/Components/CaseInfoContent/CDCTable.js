@@ -22,7 +22,7 @@ function CDCTable({ caseNumber }) {
         <div className="">
             <div className="px-4 sm:px-0 mt-2 flex flex-col items-center justify-center">
                 <h3 className="text-base font-semibold leading-7 text-gray-900">CDC Data</h3>
-                <p className="mt-1 mb-0 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
+                <p className="mt-1 mb-0 max-w-2xl text-sm leading-6 text-gray-500">{`Vehicle ${vehicleNumber} ${vehicle.general_area_of_damage} vs ${vehicle.object_contacted}`}</p>
             </div>
 
             <div className="mt-6 border-t border-gray-200">

@@ -9,7 +9,7 @@ function CaseInfoRoutes() {
     return (
         <Routes>
             <Route path="/caseInfo/:caseNumber/Summary" element={<SummaryDisplay />} />
-            <Route path="/caseInfo/:caseNumber/vehicle/:vehicleNumber/CDCdata" element={<CDCDisplay />} />
+            <Route path="/caseInfo/:caseNumber/vehicle/:vehicleNumber/CDCdata/:CDCNumber" element={<CDCDisplay />} />
             <Route path="/caseInfo/:caseNumber/vehicle/:vehicleNumber/DeltaV" element={<DeltaVDisplay />} />
             <Route path="/caseInfo/:caseNumber/vehicle/:vehicleNumber/Specifications" element={<SpecificationsDisplay />} />
 

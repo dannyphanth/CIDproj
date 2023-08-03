@@ -17,9 +17,15 @@ export const SideBarData = (caseNumber) => {
     // Extract the vehicles array from the caseData object
     const vehicles = caseData.vehicles || [];
 
-    // Creates the sub-navigation for each vehicle
+
     const vehicleSubNavs = vehicles.map((vehicle, index) => {
         const vehicleIndex = index + 1;
+        const cdcDataSubNav = vehicle.cdcArr.map((cdc, cdcIndex) => ({
+            title: `CDC Data ${cdcIndex + 1}`,
+            path: `/caseInfo/${caseNumber}/vehicle/${vehicleIndex}/CDCdata/${cdcIndex + 1}`,
+            icon: <IoIcons.IoIosPaper />,
+        }));
+
         return {
             title: `Vehicle ${vehicleIndex}`,
             icon: <AiIcons.AiFillHome />,
@@ -31,11 +37,9 @@ export const SideBarData = (caseNumber) => {
                     path: `/caseInfo/${caseNumber}/vehicle/${vehicleIndex}/Specifications`,
                     icon: <IoIcons.IoIosPaper />,
                 },
-                {
-                    title: 'CDC Data',
-                    path: `/caseInfo/${caseNumber}/vehicle/${vehicleIndex}/CDCdata`,
-                    icon: <IoIcons.IoIosPaper />,
-                },
+
+                ...cdcDataSubNav,
+
                 {
                     title: 'Delta V',
                     path: `/caseInfo/${caseNumber}/vehicle/${vehicleIndex}/DeltaV`,

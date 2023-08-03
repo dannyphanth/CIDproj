@@ -113,15 +113,31 @@ function AddCaseForm2() {
     //updates vehicle array when user inputs  
     const handleVehicleChange = (vehicleIndex, property, value, cdcIndex) => {
         const updatedVehicles = [...vehiclesArr];
-        updatedVehicles[vehicleIndex][property] = value;
+        const vehicle = updatedVehicles[vehicleIndex];
 
-        if (property in updatedVehicles[vehicleIndex].cdcArr[cdcIndex]) {
-            updatedVehicles[vehicleIndex].cdcArr[cdcIndex][property] = value;
+        if (!vehicle) {
+            // Vehicle at the specified index does not exist, handle error if needed.
+            return;
+        }
+
+        // Initialize cdcArr if missing
+        if (!vehicle.cdcArr) {
+            vehicle.cdcArr = [];
+        }
+
+        // Update the vehicle property
+        vehicle[property] = value;
+
+        // Check if cdcArr exists and has the specified index
+        if (vehicle.cdcArr && vehicle.cdcArr[cdcIndex]) {
+            vehicle.cdcArr[cdcIndex][property] = value;
         }
 
         setVehiclesArr(updatedVehicles);
         console.log({ vehiclesArr });
-    }
+    };
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -140,39 +156,43 @@ function AddCaseForm2() {
             const response = await axios.post('http://localhost:5000/cases', formData);
 
             // Reset form inputs
-            setCaseNumber('');
-            setCrashDate('');
-            setCaseSummary('');
-            setVehiclesArr([{
-                vin: "",
-                make: "",
-                model: "",
-                year: "",
-                general_area_of_damage: "",
-                object_contacted_category: "",
-                object_contacted: "",
-                force_direction: "",
-                end_shift: "",
-                clock: "",
-                over_underride: "",
-                heading_angle: "",
-                deformation_location: "",
-                long_lateral: "",
-                vertical_lateral: "",
-                distribution: "",
-                extent: "",
-                cdc_summary: "",
-                DV_basis: "",
-                DV_total: "",
-                DV_long: "",
-                DV_lateral: "",
-                DV_energy_absorption: "",
-                DV_impact_speed: "",
-                DV_moment_arm: "",
-                DV_barrier_equivalent_speed: "",
-                DV_estimated_severity: "",
-                DV_rank: ""
-            }])
+            // setCaseNumber('');
+            // setCrashDate('');
+            // setCaseSummary('');
+            // setVehiclesArr([{
+            //     vin: "",
+            //     make: "",
+            //     model: "",
+            //     year: "",
+            //     cdcArr: [
+            //         {
+            //             general_area_of_damage: "",
+            //             object_contacted_category: "",
+            //             object_contacted: "",
+            //             force_direction: "",
+            //             end_shift: "",
+            //             clock: "",
+            //             over_underride: "",
+            //             heading_angle: "",
+            //             deformation_location: "",
+            //             long_lateral: "",
+            //             vertical_lateral: "",
+            //             distribution: "",
+            //             extent: "",
+            //             cdc_summary: "",
+            //         },
+            //     ],
+            //     DV_basis: "",
+            //     DV_total: "",
+            //     DV_long: "",
+            //     DV_lateral: "",
+            //     DV_energy_absorption: "",
+            //     DV_impact_speed: "",
+            //     DV_moment_arm: "",
+            //     DV_barrier_equivalent_speed: "",
+            //     DV_estimated_severity: "",
+            //     DV_rank: ""
+            // }])
 
         } catch (error) {
             console.error('Error: ', error);

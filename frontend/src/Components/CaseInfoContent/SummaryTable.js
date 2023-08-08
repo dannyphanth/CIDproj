@@ -2,23 +2,11 @@ import { useData } from "../../CaseInfoDataContext"
 
 function SummaryTable({ caseNumber }) {
 
-    const recentOrderData = [
-        {
-            id: '1',
-            product_id: 'Toyota',
-            customer_id: 'Corolla',
-            customer_name: 'Shirley A. Lape',
-            order_date: '2020',
-            order_total: '$435.50',
-
-        }
-    ]
-
     //Fetches caseinfo data from React's Context API
     const { data } = useData();
 
     //Filters all cases with case that matches caseNumber
-    const caseData = data.find((vehicle) => vehicle.case_number === caseNumber) || [];
+    const caseData = data.find((cases) => cases.case_number === caseNumber) || [];
 
 
     return (
@@ -28,8 +16,6 @@ function SummaryTable({ caseNumber }) {
                 <h3 className="text-base font-semibold leading-7 text-gray-900">Case Overview</h3>
                 <p className="mt-1 mb-0 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
             </div>
-            {console.log("Vechicle api", { caseData })}
-
             <div className="mt-6 border-t border-gray-200">
                 <dl className="divide-y divide-gray-200">
                     <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">

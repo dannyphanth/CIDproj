@@ -59,7 +59,7 @@ const SideBar = ({ caseNumber }) => {
                     <FaIcons.FaBars onClick={showSideBar} />
                 </NavIcon>
             </Nav> */}
-            <SideBarNav sideBar={sideBar} className="w-72 lg:flex-shrink-0">
+            <SideBarNav sideBar={sideBar} className="sticky w-72 lg:flex-shrink-0">
                 <SideBarWrap >
                     {/* <NavIcon to="#">
                         <AiIcons.FaWindowClose onClick={showSideBar} />

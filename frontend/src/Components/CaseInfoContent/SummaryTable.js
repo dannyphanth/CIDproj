@@ -35,33 +35,35 @@ function SummaryTable({ caseNumber }) {
                 </dl>
             </div>
 
-            <div className="bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1">
+            <div className="bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1 ">
                 <strong className="text-gray-700 font-medium">Vehicles</strong>
-                <div className="border-x border-gray-200 rounded-sm mt-3">
-                    <table className="w-full text-gray-700">
-                        <thead>
-                            <tr>
-                                <th>Vehicle#</th>
-                                <th>Make</th>
-                                <th>Model</th>
-                                <th>Year</th>
-                                <th>Damage Plane</th>
+                <div className='overflow-x-auto'>
+                    <div className=" border-x border-gray-200 rounded-sm mt-3">
+                        <table className="w-full text-gray-700 pr-4">
+                            <thead>
+                                <tr>
+                                    <th className="px-4 py-2 text-left text-sm font-medium leading-6 text-gray-900">Vehicle#</th>
+                                    <th className="px-4 py-2 text-left text-sm font-medium leading-6 text-gray-900">Make</th>
+                                    <th className="px-4 py-2 text-left text-sm font-medium leading-6 text-gray-900">Model</th>
+                                    <th className="px-4 py-2 text-left text-sm font-medium leading-6 text-gray-900">Year</th>
+                                    <th className="px-4 py-2 text-left text-sm font-medium leading-6 text-gray-900">Severity</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {caseData.vehicles &&
-                                caseData.vehicles.map((vehicle, index) => (
-                                    <tr key={vehicle.id}>
-                                        <td>#{index + 1}</td>
-                                        <td>{vehicle.make}</td>
-                                        <td>{vehicle.model}</td>
-                                        <td>{vehicle.year}</td>
-                                        <td>{vehicle.general_area_of_damage}</td>
-                                    </tr>
-                                ))}
-                        </tbody>
-                    </table>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {caseData.vehicles &&
+                                    caseData.vehicles.map((vehicle, index) => (
+                                        <tr key={vehicle.id}>
+                                            <td className="px-4 py-2 text-left mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{index + 1}</td>
+                                            <td className="px-4 py-2 text-left mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.make}</td>
+                                            <td className="px-4 py-2 text-left mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.model}</td>
+                                            <td className="px-4 py-2 text-left mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.year}</td>
+                                            <td className="px-4 py-2 text-left mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.DV_estimated_severity}</td>
+                                        </tr>
+                                    ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 

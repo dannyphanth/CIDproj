@@ -7,24 +7,6 @@ import { SideBarData } from './SideBarData';
 import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
 
-// const Nav = styled.div` 
-// background: #15171c;
-// height: 80px;
-// display: flex;
-// justify-content: flex-start;
-// align-items: center;
-
-// `;
-
-// const NavIcon = styled(Link)`
-// margin-left 2rem;
-// font-size: 2rem;
-// height: 80px;
-// display: flex;
-// justify-content: flex-start;
-// align-items: center;
-// `;
-
 const SideBarNav = styled.nav`
 background: #15171c;
 height: 100vh;
@@ -43,8 +25,6 @@ const SideBarWrap = styled.div`
 width: 100%;
 `;
 
-
-
 const SideBar = ({ caseNumber }) => {
 
     const [sideBar, setSideBar] = useState(true)
@@ -54,18 +34,13 @@ const SideBar = ({ caseNumber }) => {
     return (
 
         <IconContext.Provider value={{ color: '#fff' }}>
-            {/* <Nav>
-                <NavIcon to="#">
-                    <FaIcons.FaBars onClick={showSideBar} />
-                </NavIcon>
-            </Nav> */}
-            <SideBarNav sideBar={sideBar} className="sticky w-72 lg:flex-shrink-0">
+            <SideBarNav sideBar={sideBar} className="sticky w-72 lg:flex-shrink-0 overflow-y-auto">
                 <SideBarWrap >
-                    {/* <NavIcon to="#">
-                        <AiIcons.FaWindowClose onClick={showSideBar} />
-                    </NavIcon> */}
                     {SideBarData(caseNumber).map((item, index) => {
-                        return <SubMenu item={item} key={index} />
+                        return <SubMenu
+                            item={item}
+                            key={index}
+                        />
                     })}
                 </SideBarWrap>
             </SideBarNav>

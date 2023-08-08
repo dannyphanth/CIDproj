@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { SubNavContext } from '../../SubNavContext';
 
 const SideBarLink = styled(Link)`
 display: flex;
@@ -50,13 +51,20 @@ const IconWrapper = styled.div`
 `;
 
 const SubMenu = ({ item }) => {
+    const { subnav, toggleSubmenu } = useContext(SubNavContext); // Get subnav state from the SubNavContext
 
-    const [subnav, setSubnav] = useState(false);
+    const submenuId = `${item.title}`; // Create a unique ID for the submenu
 
-    const showSubnav = () => setSubnav(!subnav);
+
+    const showSubnav = () => {
+        toggleSubmenu(submenuId); // Toggle the state of the specific submenu
+    };
+
+    const isSubmenuOpen = subnav[submenuId] || false;
 
     return (
         <div>
+            {console.log('submenuID', submenuId)}
             <SideBarLink onClick={showSubnav} className="h-20 pb-4 lg:pb-0">
                 <div className="flex items-start items-center text-sm md:text-base lg:text-base ">
                     <IconWrapper> {item.icon}</IconWrapper>
@@ -70,10 +78,14 @@ const SubMenu = ({ item }) => {
                             : null}
                 </div>
             </SideBarLink>
-            {subnav &&
+            {isSubmenuOpen &&
                 item.subNav.map((item, index) => {
                     return (
-                        <DropdownLink className="items-center text-start text-sm md:text-base lg:text-base h-16" to={item.path} key={index}>
+                        <DropdownLink
+                            // onClick={handleLinkClick}
+                            className="items-center text-start text-sm md:text-base lg:text-base h-16"
+                            to={item.path}
+                            key={index}>
                             {item.icon}
                             <SideBarLabel>{item.title}</SideBarLabel>
                         </DropdownLink>
@@ -81,6 +93,7 @@ const SubMenu = ({ item }) => {
                 })}
         </div>
     );
-};
+}
+
 
 export default SubMenu;

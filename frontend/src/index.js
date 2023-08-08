@@ -4,13 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { DataProvider } from './CaseInfoDataContext';
+import { SubNavProvider } from './SubNavContext'; // Import the SubNavProvider
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DataProvider>
-      <App />
-    </DataProvider>
+    <SubNavProvider>
+      <DataProvider>
+        <App />
+      </DataProvider>
+    </SubNavProvider>
   </React.StrictMode>
 );
 

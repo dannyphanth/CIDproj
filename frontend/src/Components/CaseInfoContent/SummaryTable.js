@@ -1,19 +1,7 @@
+import { useData } from "../../CaseInfoDataContext"
 
 function SummaryTable({ caseNumber }) {
 
-    // Initialize the state to hold the fetched data
-    // const [data, setData] = useState([]);
-
-    // useEffect(() => {
-    //     // Fetching API Data
-
-    //     //Update state with fetched data
-    //     // setData(responseData);
-
-    //     //catch error
-    // })
-
-    //Sample data... change later
     const recentOrderData = [
         {
             id: '1',
@@ -26,6 +14,13 @@ function SummaryTable({ caseNumber }) {
         }
     ]
 
+    //Fetches caseinfo data from React's Context API
+    const { data } = useData();
+
+    //Filters all cases with case that matches caseNumber
+    const caseData = data.find((vehicle) => vehicle.case_number === caseNumber) || [];
+
+
     return (
 
         <div className="">
@@ -33,42 +28,23 @@ function SummaryTable({ caseNumber }) {
                 <h3 className="text-base font-semibold leading-7 text-gray-900">Case Overview</h3>
                 <p className="mt-1 mb-0 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
             </div>
+            {console.log("Vechicle api", { caseData })}
+
             <div className="mt-6 border-t border-gray-200">
                 <dl className="divide-y divide-gray-200">
                     <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                         <dt className="text-sm font-medium leading-6 text-gray-900">Case Number</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">12345</dd>
+                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{caseData.case_number}</dd>
                     </div>
                     <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                         <dt className="text-sm font-medium leading-6 text-gray-900 ">Crash Date</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">04/24/2020</dd>
+                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{caseData.crash_date}</dd>
                     </div>
                     <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                         <dt className="text-sm font-medium leading-6 text-gray-900">Summary</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                            Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur
-                            qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud
-                            pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
-                        </dd>
+                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{caseData.case_summary}</dd>
                     </div>
 
-
-                    {/* <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Vin</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">margotfoster@example.com</dd>
-                    </div>
-                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Make</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Toyota</dd>
-                    </div>
-                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Model</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Camry</dd>
-                    </div>
-                    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <dt className="text-sm font-medium leading-6 text-gray-900">Year</dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">2020</dd>
-                    </div> */}
 
                 </dl>
             </div>
@@ -88,15 +64,16 @@ function SummaryTable({ caseNumber }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {recentOrderData.map((order) => (
-                                <tr key={order.id}>
-                                    <td>#{order.id}</td>
-                                    <td>#{order.product_id}</td>
-                                    <td>{order.customer_name}</td>
-                                    <td>{order.order_date}</td>
-                                    <td>{order.order_total}</td>
-                                </tr>
-                            ))}
+                            {caseData.vehicles &&
+                                caseData.vehicles.map((vehicle, index) => (
+                                    <tr key={vehicle.id}>
+                                        <td>#{index + 1}</td>
+                                        <td>{vehicle.make}</td>
+                                        <td>{vehicle.model}</td>
+                                        <td>{vehicle.year}</td>
+                                        <td>{vehicle.general_area_of_damage}</td>
+                                    </tr>
+                                ))}
                         </tbody>
                     </table>
                 </div>

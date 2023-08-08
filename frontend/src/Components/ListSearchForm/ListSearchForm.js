@@ -34,7 +34,7 @@ function ListSearchForm() {
             <input
                 type="text"
                 placeholder="Search..."
-                className="search"
+                className="search border border-gray-200 rounded shadow-md "
                 onChange={(e) => setQuery(e.target.value.toLowerCase())}
             />
             <Table data={search(data)} />

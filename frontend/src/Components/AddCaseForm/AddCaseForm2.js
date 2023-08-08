@@ -51,6 +51,10 @@ function AddCaseForm2() {
 
     }]);
 
+
+    const [currentCDCIndex, setCurrentCDCIndex] = useState(0); // Initialize with default value
+
+
     //Function that adds empty vehicle to array of vehicles
     const handleAddVehicle = () => {
         setVehiclesArr([...vehiclesArr, {
@@ -108,6 +112,22 @@ function AddCaseForm2() {
             cdc_summary: "",
         });
         setVehiclesArr(updatedVehicles);
+
+        setCurrentCDCIndex(currentCDCIndex + 1);
+    }
+
+    const handleRemoveCDCEvent = (vehicleIndex) => {
+        const updatedVehicles = [...vehiclesArr];
+        const vehicle = updatedVehicles[vehicleIndex];
+
+        if (!vehicle || !vehicle.cdcArr || !vehicle.cdcArr[currentCDCIndex]) {
+            // Handle error if necessary or return early
+            return;
+        }
+
+        vehicle.cdcArr.pop();
+        setVehiclesArr(updatedVehicles);
+        setCurrentCDCIndex(currentCDCIndex - 1);
     }
 
     //updates vehicle array when user inputs  
@@ -257,7 +277,7 @@ function AddCaseForm2() {
 
                     <div className="flex justify-center">
                         <h1 className="flex justify-center border-bottom w-1/2 text-2xl text-center font-semibold my-4">
-                            {`Vehicle Info #${index + 1}`}
+                            {`Vehicle #${index + 1}`}
                         </h1>
                     </div>
 
@@ -318,208 +338,219 @@ function AddCaseForm2() {
                         </div>
                     </div>
 
-                    <div className="flex justify-center">
-                        <h1 className="flex justify-center border-bottom w-1/2 text-2xl text-center font-semibold my-4">
-                            CDC
-                        </h1>
-                    </div>
+
 
 
                     {vehicle.cdcArr.map((cdc, cdcIndex) =>
-                        <div className="grid lg:grid-cols-3">
-                            {/* Row 1 */}
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input1" className="flex justify-start">General Area of Damage</Label>
-                                    <Input
-                                        type="text"
-                                        id="general_area_of_damage"
-                                        value={cdc.general_area_of_damage}
-                                        onChange={(e) => handleVehicleChange(index, 'general_area_of_damage', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input2" className="flex justify-start">Object Contacted Category</Label>
-                                    <Input
-                                        type="text"
-                                        id="object_contacted_category"
-                                        value={cdc.object_contacted_category}
-                                        onChange={(e) => handleVehicleChange(index, 'object_contacted_category', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input3" className="flex justify-start">Object Contacted</Label>
-                                    <Input
-                                        type="text"
-                                        id="object_contacted"
-                                        value={cdc.object_contacted}
-                                        onChange={(e) => handleVehicleChange(index, 'object_contacted', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            {/* Row 2 */}
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input4" className="flex justify-start">Force Direction</Label>
-                                    <Input
-                                        type="text"
-                                        id="force_direction"
-                                        value={cdc.force_direction}
-                                        onChange={(e) => handleVehicleChange(index, 'force_direction', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input5" className="flex justify-start">End Shift</Label>
-                                    <Input
-                                        type="text"
-                                        id="end_shift"
-                                        value={cdc.end_shift}
-                                        onChange={(e) => handleVehicleChange(index, 'end_shift', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input6" className="flex justify-start">Clock</Label>
-                                    <Input
-                                        type="text"
-                                        id="clock"
-                                        value={cdc.clock}
-                                        onChange={(e) => handleVehicleChange(index, 'clock', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            {/* Row 3 */}
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input4" className="flex justify-start">Over / Underride</Label>
-                                    <Input
-                                        type="text"
-                                        id="over_underride"
-                                        value={cdc.over_underride}
-                                        onChange={(e) => handleVehicleChange(index, 'over_underride', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input5" className="flex justify-start">Heading Angle</Label>
-                                    <Input
-                                        type="text"
-                                        id="heading_angle"
-                                        value={cdc.heading_angle}
-                                        onChange={(e) => handleVehicleChange(index, 'heading_angle', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input6" className="flex justify-start">Deformation Location</Label>
-                                    <Input
-                                        type="text"
-                                        id="deformation_location"
-                                        value={cdc.deformation_location}
-                                        onChange={(e) => handleVehicleChange(index, 'deformation_location', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            {/* Row 4 */}
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input4" className="flex justify-start">Long / Lateral</Label>
-                                    <Input
-                                        type="text"
-                                        id="longLateral"
-                                        value={cdc.long_lateral}
-                                        onChange={(e) => handleVehicleChange(index, 'long_lateral', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input5" className="flex justify-start">Vertical / Lateral</Label>
-                                    <Input
-                                        type="text"
-                                        id="vertical_lateral"
-                                        value={cdc.vertical_lateral}
-                                        onChange={(e) => handleVehicleChange(index, 'vertical_lateral', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input6" className="flex justify-start">Distribution</Label>
-                                    <Input
-                                        type="text"
-                                        id="distribution"
-                                        value={cdc.distribution}
-                                        onChange={(e) => handleVehicleChange(index, 'distribution', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            {/* Row 5 */}
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input4" className="flex justify-start">Extent</Label>
-                                    <Input
-                                        type="text"
-                                        id="extent"
-                                        value={cdc.extent}
-                                        onChange={(e) => handleVehicleChange(index, 'extent', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
-                            <div className="flex justify-center">
-                                <FormGroup className="w-full sm:w-4/5 p-2">
-                                    <Label for="input5" className="flex justify-start">CDC Summary</Label>
-                                    <Input
-                                        type="text"
-                                        id="cdc_summary"
-                                        value={cdc.cdc_summary}
-                                        onChange={(e) => handleVehicleChange(index, 'cdc_summary', e.target.value, cdcIndex)}
-                                        required
-                                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                    />
-                                </FormGroup>
-                            </div>
 
+                        <div>
+                            <div className="flex justify-center">
+                                <h1 className="flex justify-center border-bottom w-1/2 text-2xl text-center font-semibold my-4">
+                                    CDC Event #{cdcIndex + 1}
+                                </h1>
+                            </div>
+                            <div className="grid lg:grid-cols-3">
+                                {/* Row 1 */}
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input1" className="flex justify-start">General Area of Damage</Label>
+                                        <Input
+                                            type="text"
+                                            id="general_area_of_damage"
+                                            value={cdc.general_area_of_damage}
+                                            onChange={(e) => handleVehicleChange(index, 'general_area_of_damage', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input2" className="flex justify-start">Object Contacted Category</Label>
+                                        <Input
+                                            type="text"
+                                            id="object_contacted_category"
+                                            value={cdc.object_contacted_category}
+                                            onChange={(e) => handleVehicleChange(index, 'object_contacted_category', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input3" className="flex justify-start">Object Contacted</Label>
+                                        <Input
+                                            type="text"
+                                            id="object_contacted"
+                                            value={cdc.object_contacted}
+                                            onChange={(e) => handleVehicleChange(index, 'object_contacted', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                {/* Row 2 */}
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input4" className="flex justify-start">Force Direction</Label>
+                                        <Input
+                                            type="text"
+                                            id="force_direction"
+                                            value={cdc.force_direction}
+                                            onChange={(e) => handleVehicleChange(index, 'force_direction', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input5" className="flex justify-start">End Shift</Label>
+                                        <Input
+                                            type="text"
+                                            id="end_shift"
+                                            value={cdc.end_shift}
+                                            onChange={(e) => handleVehicleChange(index, 'end_shift', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input6" className="flex justify-start">Clock</Label>
+                                        <Input
+                                            type="text"
+                                            id="clock"
+                                            value={cdc.clock}
+                                            onChange={(e) => handleVehicleChange(index, 'clock', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                {/* Row 3 */}
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input4" className="flex justify-start">Over / Underride</Label>
+                                        <Input
+                                            type="text"
+                                            id="over_underride"
+                                            value={cdc.over_underride}
+                                            onChange={(e) => handleVehicleChange(index, 'over_underride', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input5" className="flex justify-start">Heading Angle</Label>
+                                        <Input
+                                            type="text"
+                                            id="heading_angle"
+                                            value={cdc.heading_angle}
+                                            onChange={(e) => handleVehicleChange(index, 'heading_angle', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input6" className="flex justify-start">Deformation Location</Label>
+                                        <Input
+                                            type="text"
+                                            id="deformation_location"
+                                            value={cdc.deformation_location}
+                                            onChange={(e) => handleVehicleChange(index, 'deformation_location', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                {/* Row 4 */}
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input4" className="flex justify-start">Long / Lateral</Label>
+                                        <Input
+                                            type="text"
+                                            id="longLateral"
+                                            value={cdc.long_lateral}
+                                            onChange={(e) => handleVehicleChange(index, 'long_lateral', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input5" className="flex justify-start">Vertical / Lateral</Label>
+                                        <Input
+                                            type="text"
+                                            id="vertical_lateral"
+                                            value={cdc.vertical_lateral}
+                                            onChange={(e) => handleVehicleChange(index, 'vertical_lateral', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input6" className="flex justify-start">Distribution</Label>
+                                        <Input
+                                            type="text"
+                                            id="distribution"
+                                            value={cdc.distribution}
+                                            onChange={(e) => handleVehicleChange(index, 'distribution', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                {/* Row 5 */}
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input4" className="flex justify-start">Extent</Label>
+                                        <Input
+                                            type="text"
+                                            id="extent"
+                                            value={cdc.extent}
+                                            onChange={(e) => handleVehicleChange(index, 'extent', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                                <div className="flex justify-center">
+                                    <FormGroup className="w-full sm:w-4/5 p-2">
+                                        <Label for="input5" className="flex justify-start">CDC Summary</Label>
+                                        <Input
+                                            type="text"
+                                            id="cdc_summary"
+                                            value={cdc.cdc_summary}
+                                            onChange={(e) => handleVehicleChange(index, 'cdc_summary', e.target.value, cdcIndex)}
+                                            required
+                                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </FormGroup>
+                                </div>
+                            </div>
                         </div>
+
                     )}
-                    <div>
-                        <Button color="secondary" type="button" className="w-20 p-2 mt-4" onClick={() => handleAddCDCEvent(index)}>
-                            Add CDC Event
+                    <div className="flex justify-center">
+                        <Button
+                            className="w-32 h-12 bg-red-500 hover:bg-red-700 text-white font-bold rounded m-2 border-0 shadow-md ring-1 ring-inset ring-gray-300"
+                            type="button"
+                            color="danger"
+                            onClick={() => handleRemoveCDCEvent(index)}>
+                            Remove Event
+                        </Button>
+                        <Button color="success" type="button" className="w-32 h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded m-2 border-0 shadow-md ring-1 ring-inset ring-gray-300" onClick={() => handleAddCDCEvent(index)}>
+                            Add Event
                         </Button>
                     </div>
 
@@ -672,23 +703,14 @@ function AddCaseForm2() {
 
                 </div>
             ))
-            };
+            }
 
-
-
-
-
-
-            TESTING
-            {/* TESTING */}
-
-
-
-            <Button color="secondary" type="button" className="w-20 p-2 mt-4" onClick={handleAddVehicle}>
-                Add Another Vehicle
+            <Button color="success" type="button" className="w-32 h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded m-2 border-0 shadow-md ring-1 ring-inset ring-gray-300" onClick={handleAddVehicle}>
+                Add Vehicle
             </Button>
 
-            <Button color="primary" type="submit" className="w-20 p-2 mt-4" >
+
+            <Button color="primary" type="submit" className="w-32 h-12 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded m-2 border-0 shadow-md ring-1 ring-inset ring-gray-300" >
                 Submit
             </Button>
         </Form >

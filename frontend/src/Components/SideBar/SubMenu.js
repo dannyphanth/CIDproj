@@ -18,7 +18,7 @@ font-size: 18px;
 
 &:hover{
     background: #252831;
-    border-left: 4px solid #632ce4;
+    border-left: 4px solid #485B99;
     cursor: pointer;
 }
 `;
@@ -66,12 +66,12 @@ const SubMenu = ({ item }) => {
         <div>
             {console.log('submenuID', submenuId)}
             <SideBarLink onClick={showSubnav} className="h-20 pb-4 lg:pb-0">
-                <div className="flex items-start items-center text-sm md:text-base lg:text-base ">
+                <div className="flex items-start items-center text-sm font-light md:text-base lg:text-base ">
                     <IconWrapper> {item.icon}</IconWrapper>
                     <SideBarLabel className="text-start">{item.title}</SideBarLabel>
                 </div>
                 <div>
-                    {item.subNav && subnav
+                    {item.subNav && isSubmenuOpen
                         ? item.iconOpened
                         : item.subNav
                             ? item.iconClosed
@@ -83,7 +83,7 @@ const SubMenu = ({ item }) => {
                     return (
                         <DropdownLink
                             // onClick={handleLinkClick}
-                            className="items-center text-start text-sm md:text-base lg:text-base h-16"
+                            className="items-center text-start text-sm font-light md:text-base lg:text-base h-16"
                             to={item.path}
                             key={index}>
                             {item.icon}

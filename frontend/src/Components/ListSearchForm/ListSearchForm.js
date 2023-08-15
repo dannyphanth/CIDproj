@@ -21,7 +21,7 @@ function ListSearchForm() {
     }, []);
 
     //Searches the keys in data model and checks to see if value matches user search
-    const keys = ["case_number", "make"];
+    const keys = ["case_number"];
     const search = (data) => {
         return data.filter((item) =>
             keys.some((key) => item[key].toLowerCase().includes(query))

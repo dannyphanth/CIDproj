@@ -50,7 +50,7 @@ function SpecificationsTable({ caseNumber }) {
     return (
         <div className="">
             <div className="px-4 sm:px-0 mt-2 flex flex-col items-center justify-center">
-                <h3 className="text-base font-semibold leading-7 text-gray-900">Specifications</h3>
+                <h3 className="text-large font-semibold leading-7 text-gray-900">Specifications</h3>
                 <p className="mt-1 mb-0 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
             </div>
 
@@ -79,7 +79,7 @@ function SpecificationsTable({ caseNumber }) {
                 {vehicleDecodeInfo ? (
                     <dl className="divide-y divide-gray-200">
                         <div className="px-4 sm:px-0 mt-2 flex flex-col items-center justify-center">
-                            <h3 className="text-base font-semibold leading-7 text-gray-900">Vehicle Decode</h3>
+                            <h3 className="text-large font-semibold leading-7 text-gray-900">Vehicle Decode</h3>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Vehicle Type</dt>

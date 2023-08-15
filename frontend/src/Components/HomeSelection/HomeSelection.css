@@ -1,4 +1,4 @@
-.container {
+/* .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,13 +9,13 @@
     max-height: 30vh;
     margin: 2rem;
     border: 2px solid black;
-}
+} */
 
 .description {
     color: black;
 }
 
-.button {
+/* .button {
     font-size: 1.5rem;
     background: #007bff;
     color: #fff;
@@ -24,4 +24,4 @@
     cursor: pointer;
     box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1);
     margin: 2rem;
-}
+} */

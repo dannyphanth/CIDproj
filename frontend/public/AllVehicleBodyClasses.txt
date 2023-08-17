@@ -1,0 +1,72 @@
+Ambulance
+Bus
+Bus - School Bus
+Cargo Van
+Convertible/Cabriolet
+Coupe
+Crossover Utility Vehicle (CUV)
+Fire Apparatus
+Hatchback/Liftback/Notchback
+Incomplete
+Incomplete - Bus Chassis
+Incomplete - Chassis Cab (Double Cab)
+Incomplete - Chassis Cab (Number of Cab Unknown)
+Incomplete - Chassis Cab (Single Cab)
+Incomplete - Commercial Bus Chassis
+Incomplete - Commercial Chassis
+Incomplete - Cutaway
+Incomplete - Glider
+Incomplete - Motor Coach Chassis
+Incomplete - Motor Home Chassis
+Incomplete - School Bus Chassis
+Incomplete - Shuttle Bus Chassis
+Incomplete - Stripped Chassis
+Incomplete - Transit Bus Chassis
+Limousine
+Low Speed Vehicle (LSV) / Neighborhood Electric Vehicle (NEV)
+Minivan
+Motorcycle - Competition
+Motorcycle - Cross Country
+Motorcycle - Cruiser
+Motorcycle - Custom
+Motorcycle - Dual Sport / Adventure / Supermoto / On/Off-road
+Motorcycle - Enclosed Three Wheeled / Enclosed Autocycle
+Motorcycle - Moped
+Motorcycle - Scooter
+Motorcycle - Side Car
+Motorcycle - Small / Minibike
+Motorcycle - Sport
+Motorcycle - Standard
+Motorcycle - Street
+Motorcycle - Touring / Sport Touring
+Motorcycle - Trike
+Motorcycle - Underbone
+Motorcycle - Unenclosed Three Wheeled / Open Autocycle
+Motorcycle - Unknown Body Class
+Motorhome
+Motorized Bicycle
+Not Reported
+Off-road Vehicle - All Terrain Vehicle (ATV) (Motorcycle-style)
+Off-road Vehicle - Construction Equipment
+Off-road Vehicle - Dirt Bike / Off-Road
+Off-road Vehicle - Enduro (Off-road long distance racing)
+Off-road Vehicle - Farm Equipment
+Off-road Vehicle - Go Kart
+Off-road Vehicle - Golf Cart
+Off-road Vehicle - Motocross (Off-road short distance, closed track racing)
+Off-road Vehicle - Recreational Off-Road Vehicle (ROV)
+Off-road Vehicle - Snowmobile
+Other
+Pickup
+Roadster
+Sedan/Saloon
+Sport Utility Truck (SUT)
+Sport Utility Vehicle (SUV)/Multi-Purpose Vehicle (MPV)
+Step Van / Walk-in Van
+Street Sweeper
+Streetcar / Trolley
+Truck
+Truck-Tractor
+Unknown
+Van
+Wagon

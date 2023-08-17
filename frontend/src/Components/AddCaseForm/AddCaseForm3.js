@@ -227,7 +227,7 @@ function AddCaseForm2() {
 
                 <Form onSubmit={handleSubmit} className="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                     {/* Case Details Inputs */}
-                    <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3 mb-8">
+                    <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3 py-4">
                         <div className="text-gray-600">
                             <p className="font-medium text-lg">Case Details</p>
                             <p>Please fill out all the fields.</p>
@@ -274,11 +274,14 @@ function AddCaseForm2() {
                             </div>
                         </div>
                     </div>
+                    <div className="border border-solid-500 shadow">
+
+                    </div>
 
                     {vehiclesArr.map((vehicle, index) => (
                         <div key={index}>
 
-                            <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3 mb-8">
+                            <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3 py-4">
                                 <div className="text-gray-600">
                                     <p className="font-medium text-lg">{`Vehicle Details #${index + 1}`}</p>
                                     <p>Please fill out all the fields.</p>
@@ -336,13 +339,13 @@ function AddCaseForm2() {
                             </div>
 
                             {vehicle.cdcArr.map((cdc, cdcIndex) =>
-                                <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                                <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3 py-4">
                                     <div className="text-gray-600">
                                         <p className="font-medium text-lg">  CDC Event #{cdcIndex + 1}</p>
                                         <p>Please fill out all the fields.</p>
                                     </div>
                                     <div className="lg:col-span-2">
-                                        <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6 mb-8">
+                                        <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6 ">
                                             {/* Row 1 */}
                                             <FormGroup className="md:col-span-2">
                                                 <Label for="input1" className="flex justify-start">General Area of Damage</Label>
@@ -509,7 +512,7 @@ function AddCaseForm2() {
                                 </div>
                             )}
                             {/* Add and Remove CDC Buttons */}
-                            <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3 mb-8">
+                            <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3 my-4">
                                 <p></p>
                                 <div className="lg:col-span-2">
 
@@ -528,7 +531,7 @@ function AddCaseForm2() {
                                 </div>
                             </div>
 
-                            <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                            <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3 py-4">
                                 <div className="text-gray-600">
                                     <p className="font-medium text-lg">Delta V</p>
                                     <p>Please fill out all the fields.</p>

@@ -154,7 +154,7 @@ function AddCaseForm2() {
         }
 
         setVehiclesArr(updatedVehicles);
-        console.log({ vehiclesArr });
+        // console.log({ vehiclesArr });
     };
 
 
@@ -223,17 +223,21 @@ function AddCaseForm2() {
 
     return (
 
-
-        <Form onSubmit={handleSubmit} className=" border border-black-500 mx-12">
+        <Form onSubmit={handleSubmit} className=" border border-black-500 mx-36 shadow my-8" >
             <div className="flex justify-center">
-                <h1 className="flex justify-center border-bottom w-1/2 text-2xl text-center font-semibold mb-4 pt-2">
-                    Add Case
+                <h1 className="flex justify-center border-bottom w-1/2 text-3xl text-center font-semibold m-4">
+                    Case Submission
                 </h1>
             </div>
 
             {/* Case Number and Crash Date */}
-            <div className="flex flex-wrap justify-center ">
-                <FormGroup className="w-full sm:w-4/5 md:w-1/2 lg:w-1/3 p-2 pl-0 justify-start">
+            <div className="flex flex-col ">
+                <div className="w-full text-start mx-auto">
+                    <h1>
+                        Case Details
+                    </h1>
+                </div>
+                <FormGroup className="w-full sm:w-4/5 md:w-1/2 lg:w-1/3 p-2 ">
                     <Label for="caseNumber" className="flex justify-start">Case Number</Label>
                     <Input
                         type="text"
@@ -244,7 +248,7 @@ function AddCaseForm2() {
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                 </FormGroup>
-                <FormGroup className="w-full sm:w-4/5 md:w-1/6 lg:w-1/6 p-2">
+                <FormGroup className="w-full sm:w-4/5 md:w-1/2 lg:w-1/5 p-2 ">
                     <Label for="crashDate" className="flex justify-start">Crash Date</Label>
                     <Input
                         type="date"
@@ -259,31 +263,40 @@ function AddCaseForm2() {
             </div>
 
             {/* Case Summary */}
-            <FormGroup className="w-full sm:w-4/5 md:w-1/2 lg:w-1/2 p-2 mx-auto">
-                <Label for="Summary" className="flex justify-start">Case Summary</Label>
-                <textarea
-                    type="text"
-                    id="Summary"
-                    value={caseSummary}
-                    onChange={(e) => setCaseSummary(e.target.value)}
-                    required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-            </FormGroup>
+            <div className="flex">
+                <FormGroup className="w-full sm:w-4/5 md:w-1/2 lg:w-1/3 p-2 ">
+                    <Label for="Summary" className="flex justify-start">Case Summary</Label>
+                    <textarea
+                        type="text"
+                        id="Summary"
+                        value={caseSummary}
+                        onChange={(e) => setCaseSummary(e.target.value)}
+                        required
+                        className=" h-24 px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                </FormGroup>
+                <div className="w-full w-full sm:w-4/5 md:w-1/2 lg:w-1/5 p-2 ">
+
+                </div>
+            </div>
 
 
             {vehiclesArr.map((vehicle, index) => (
                 <div key={index}>
 
-                    <div className="flex justify-center">
-                        <h1 className="flex justify-center border-bottom w-1/2 text-2xl text-center font-semibold my-4">
-                            {`Vehicle #${index + 1}`}
-                        </h1>
-                    </div>
-
                     <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-2 ">
-                        {/* First Row */}
+                        <div className="col-span-1 p-2 pb-0 flex justify-center">
+                            <div className="w-full sm:w-4/5 md:w-4/5 lg:w-3/5 p-2 pb-0">
+                                <h1 className="flex justify-start items-baseline border-bottom w-1/2 lg:text-2xl md:text-xl sm:text-xl text-center font-semibold m-0">
+                                    {`Vehicle ${index + 1}`}
+                                </h1>
+                            </div>
+                        </div>
                         <div className="col-span-1 p-2 flex justify-center">
+                        </div>
+
+                        {/* First Row */}
+                        <div className="col-span-1 p-2 flex justify-center w-full">
                             <FormGroup className="w-full sm:w-4/5 md:w-4/5 lg:w-3/5 p-2">
                                 <Label for={`vin-${index}`} className="flex justify-start">Vin</Label>
                                 <Input
@@ -292,12 +305,12 @@ function AddCaseForm2() {
                                     value={vehicle.vin}
                                     onChange={(e) => handleVehicleChange(index, 'vin', e.target.value)}
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className=" block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </FormGroup>
                         </div>
                         <div className="col-span-1 p-2 flex justify-center">
-                            <FormGroup className="w-full sm:w-4/5 md:w-4/5 lg:w-3/5 p-2">
+                            <FormGroup className="flex flex-col justify-start w-full sm:w-4/5 md:w-4/5 lg:w-3/5 p-2">
                                 <Label for={`make-${index}`} className="flex justify-start">Make</Label>
                                 <Input
                                     type="text"
@@ -346,7 +359,7 @@ function AddCaseForm2() {
                         <div>
                             <div className="flex justify-center">
                                 <h1 className="flex justify-center border-bottom w-1/2 text-2xl text-center font-semibold my-4">
-                                    CDC Event #{cdcIndex + 1}
+                                    CDC Event {cdcIndex + 1}
                                 </h1>
                             </div>
                             <div className="grid lg:grid-cols-3">

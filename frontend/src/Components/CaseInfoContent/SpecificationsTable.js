@@ -43,7 +43,7 @@ function SpecificationsTable({ caseNumber }) {
 
     if (!vehicle) {
         // If vehicle data is not available, show a loading message or error message
-        return <p>No vehicle data found for the caseNumber</p>;
+        return <p>No vehicle decode data found for the caseNumber</p>;
     }
 
 

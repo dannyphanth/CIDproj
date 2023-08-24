@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import "./ListSearchForm.css";
 import axios from 'axios';
 import Table from './Table';
+import * as AiIcons from 'react-icons/ai'
+
 
 function ListSearchForm() {
 
@@ -30,14 +32,17 @@ function ListSearchForm() {
 
     return (
 
-        <div>
+        <div className="container max-w-screen-lg mx-auto">
             <input
                 type="text"
                 placeholder="Search..."
-                className="search border border-gray-200 rounded shadow-md "
+                className="search w-56 h-12 mt-8 px-3 font-semibold placeholder-gray-500 text-black rounded-2xl border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2 shadow-md "
                 onChange={(e) => setQuery(e.target.value.toLowerCase())}
+
             />
+
             <Table data={search(data)} />
+
         </div>
 
     )

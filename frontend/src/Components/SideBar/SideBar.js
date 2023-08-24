@@ -38,16 +38,7 @@ const SideBar = ({ caseNumber }) => {
             <SideBarNav sideBar={sideBar} className="sticky top-0 overflow-y-auto overflow-x-hidden min-h-screen">
                 <SideBarWrap>
                     <div className="flex justify-between">
-                        <Link to="/listAll-search">
-                            <BackButton className="bg-CIDColor hover:bg-blue-900 text-white font-semibold py-2 px-2.5 rounded flex flex-start m-1.5 h-8 items-center gap-2 text-sm md:text-base lg:text-base font-semibold shadow-lg shadow-blue-500/40">
-                                <AiIcons.AiOutlineArrowLeft />
-                            </BackButton>
-                        </Link>
-                        <Link to="/">
-                            <BackButton className="bg-CIDColor hover:bg-blue-900 text-white font-normal py-2 px-4 rounded flex flex-start m-1.5 h-8 items-center gap-2 text-sm md:text-base lg:text-base font-semibold">
-                                <AiIcons.AiFillHome />Home
-                            </BackButton>
-                        </Link>
+
                     </div>
                     {SideBarData(caseNumber).map((item, index) => {
                         return <SubMenu item={item} key={index} />;

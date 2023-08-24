@@ -3,6 +3,7 @@ import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import * as IoIcons from 'react-icons/io'
 import * as RiIcons from 'react-icons/ri'
+import * as BiIcons from 'react-icons/bi'
 
 //import Data
 import { useData } from '../../CaseInfoDataContext'
@@ -28,7 +29,7 @@ export const SideBarData = (caseNumber) => {
 
         return {
             title: `Vehicle ${vehicleIndex}`,
-            icon: <AiIcons.AiFillHome />,
+            icon: <AiIcons.AiFillCar />,
             iconClosed: <RiIcons.RiArrowDownSFill />,
             iconOpened: <RiIcons.RiArrowUpSFill />,
             subNav: [
@@ -56,7 +57,7 @@ export const SideBarData = (caseNumber) => {
         {
             title: 'Crash Summary',
             // path: '/',
-            icon: <AiIcons.AiFillHome />,
+            icon: <BiIcons.BiSolidCarCrash />,
             iconClosed: <RiIcons.RiArrowDownSFill />,
             iconOpened: <RiIcons.RiArrowUpSFill />,
             subNav: [
@@ -78,7 +79,7 @@ export const SideBarData = (caseNumber) => {
         {
             title: 'Images',
             // path: `${previousPath}/Images`,
-            icon: <AiIcons.AiFillHome />,
+            icon: <AiIcons.AiFillFileImage />,
             iconClosed: <RiIcons.RiArrowDownSFill />,
             iconOpened: <RiIcons.RiArrowUpSFill />,
             subNav: [

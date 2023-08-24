@@ -5,16 +5,21 @@ const Table = ({ data }) => {
 
         data.forEach((cases) => {
             cases.vehicles.forEach((vehicle) => {
-
                 const vehSeverity = vehicle.DV_estimated_severity.toLowerCase();
 
-                // Compare current vehicle severity with case by case strings
+                // Compare current vehicle severity with maxSeverity
                 if (vehSeverity === "severe") {
-                    maxSeverity = "Severe";
-                } else if (vehSeverity === "moderate" && maxSeverity !== "severe") {
-                    maxSeverity = "Moderate";
-                } else {
-                    maxSeverity = 'Minor';
+                    if (maxSeverity !== "Severe") {
+                        maxSeverity = "Severe";
+                    }
+                } else if (vehSeverity === "moderate") {
+                    if (maxSeverity !== "Severe" && maxSeverity !== "Moderate") {
+                        maxSeverity = "Moderate";
+                    }
+                } else if (vehSeverity === "minor") {
+                    if (maxSeverity !== "Severe" && maxSeverity !== "Moderate" && maxSeverity !== "Minor") {
+                        maxSeverity = "Minor";
+                    }
                 }
             });
         });
@@ -22,13 +27,14 @@ const Table = ({ data }) => {
         return maxSeverity;
     }
 
+
     const maxSeverity = getMaxSeverity(data);
 
 
 
 
     return (
-        <div className="m-6 border border-gray-200 rounded-sm mt-3 block bg-transparent overflow-x-auto shadow-md rounded">
+        <div className=" border border-gray-200 rounded-sm mt-2 block bg-transparent overflow-x-auto shadow-md rounded">
             <table className="w-full text-gray-700">
                 <thead>
                     <tr className="bg-gray-200 text-gray-600 text-sm leading-normal">

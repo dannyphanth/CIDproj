@@ -25,6 +25,8 @@ function SpecificationsTable({ caseNumber }) {
         try {
             const response = await axios.get(`https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValuesExtended/${vin}?format=json&modelyear=${year}`);
             setVehicleDecodeInfo(response.data);
+
+            console.log(vehicleDecodeInfo)
             // console.log("decode Info", response.data);
         } catch (error) {
             // Handle error if the API call fails
@@ -39,13 +41,47 @@ function SpecificationsTable({ caseNumber }) {
             const vehicleYear = caseData.vehicles[vehicleIndex].year;
             fetchVehicleDecodeInfo(vehicleVin, vehicleYear);
         }
+
     }, [vehicleIndex, vehicle]);
+
 
     if (!vehicle) {
         // If vehicle data is not available, show a loading message or error message
         return <p>No vehicle decode data found for the caseNumber</p>;
     }
 
+    // Array of keys and associated values to display
+    const displayKeysWithValues = [
+        { key: 'VehicleType', label: 'Vehicle Type' },
+        { key: 'Manufacturer', label: 'Manufacturer' },
+        { key: 'BodyClass', label: 'Body Class' },
+        { key: 'Series', label: 'Series' },
+        { key: 'PlantCountry', label: 'Plant Country' },
+        { key: 'PlantCity', label: 'Plant City' },
+        { key: 'Doors', label: 'Doors' },
+        { key: 'GVWR', label: 'Gross Vehicle Weight Rating' },
+        { key: 'BusType', label: 'Bus Type' },
+        { key: 'BusFloorConfigType', label: 'Bus Floor Configuration Type' },
+        { key: 'CustomMotorcycleType', label: 'Custom Motorcycle Type' },
+        { key: 'MotorcycleSuspensionType', label: 'Motorcycle Suspension Type' },
+        { key: 'MotorcycleChassisType', label: 'Motorcycle Chassis Type' },
+        { key: 'TransmissionSpeeds', label: 'Transmission Speeds' },
+        { key: 'TransmissionStyle', label: 'Transmission Style' },
+        { key: 'BrakeSystemType', label: 'Brake System Type' },
+        { key: 'EngineManufacturer', label: 'Engine Manufacturer' },
+        { key: 'EngineModel', label: 'Engine Model' },
+        { key: 'EngineConfiguration', label: 'Engine Configuration' },
+        { key: 'EngineKW', label: 'Engine Power (kW)' },
+        { key: 'EngineCylinders', label: 'Engine Number of Cylinders' },
+        { key: 'EngineHP', label: 'Engine HP' },
+        { key: 'DisplacementCI', label: 'Displacement (CI)' },
+        { key: 'DisplacementCC', label: 'Displacement (CC)' },
+        { key: 'DisplacementL', label: 'Displacement (L)' },
+        { key: 'FuelTypePrimary', label: 'Fuel Type - Primary' },
+        { key: 'ValveTrainDesign', label: 'Valve Train Design' },
+        { key: 'AirBagLocFront', label: 'Front Air Bag Locations' },
+
+    ];
 
     return (
         <div className="">
@@ -59,7 +95,15 @@ function SpecificationsTable({ caseNumber }) {
                     <dl className="divide-y divide-gray-200">
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900">Vin</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.vin || "Unknown"}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                {vehicle.vin ? (
+                                    <>
+                                        {vehicle.vin.substring(0, vehicle.vin.length - 6)}******
+                                    </>
+                                ) : (
+                                    "Unknown"
+                                )}
+                            </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Make</dt>
@@ -78,42 +122,30 @@ function SpecificationsTable({ caseNumber }) {
 
                 {vehicleDecodeInfo ? (
                     <dl className="divide-y divide-gray-200">
+                        {console.log("Vehicle decode", vehicleDecodeInfo)}
                         <div className="px-4 sm:px-0 mt-2 flex flex-col items-center justify-center">
                             <h3 className="text-large font-semibold leading-7 text-gray-900">Vehicle Decode</h3>
                         </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
-                            <dt className="text-sm font-medium leading-6 text-gray-900 ">Vehicle Type</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].VehicleType || "Unknown"}</dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
-                            <dt className="text-sm font-medium leading-6 text-gray-900 ">Manufacturer</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].Manufacturer || "Unknown"}</dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
-                            <dt className="text-sm font-medium leading-6 text-gray-900 ">Body Class</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].BodyClass || "Unknown"}</dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
-                            <dt className="text-sm font-medium leading-6 text-gray-900 ">Series</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].Series || "Unknown"}</dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
-                            <dt className="text-sm font-medium leading-6 text-gray-900 ">Plant Country</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].PlantCountry || "Unknown"}</dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
-                            <dt className="text-sm font-medium leading-6 text-gray-900 ">Plant City</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].PlantCity || "Unknown"}</dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
-                            <dt className="text-sm font-medium leading-6 text-gray-900 ">Doors</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicleDecodeInfo.Results[0].Doors || "Unknown"}</dd>
-                        </div>
+                        {vehicleDecodeInfo && vehicleDecodeInfo.Results[0].ErrorCode !== "0" && (
+                            <p className="pt-4">Information not available</p>
+                        )}
+                        {displayKeysWithValues.map(({ key, label }) => {
+                            const value = vehicleDecodeInfo.Results[0][key];
+                            if (value !== "" && value !== undefined && value !== null) {
+                                return (
+                                    <div key={key} className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                                        <dt className="text-sm font-medium leading-6 text-gray-900 ">{label}</dt>
+                                        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{value}</dd>
+                                    </div>
+                                );
+                            } else {
+                                return null; // Skip rendering if value is empty
+                            }
+                        })}
                     </dl>
                 ) : (
-                    <p>Loading vehicle decode information...</p>
+                    <p>Fetching vehicle decode information...</p>
                 )}
-
 
             </div>
 

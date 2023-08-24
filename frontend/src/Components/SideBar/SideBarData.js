@@ -3,6 +3,7 @@ import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import * as IoIcons from 'react-icons/io'
 import * as RiIcons from 'react-icons/ri'
+import * as BiIcons from 'react-icons/bi'
 
 //import Data
 import { useData } from '../../CaseInfoDataContext'
@@ -17,12 +18,18 @@ export const SideBarData = (caseNumber) => {
     // Extract the vehicles array from the caseData object
     const vehicles = caseData.vehicles || [];
 
-    // Creates the sub-navigation for each vehicle
+
     const vehicleSubNavs = vehicles.map((vehicle, index) => {
         const vehicleIndex = index + 1;
+        const cdcDataSubNav = vehicle.cdcArr.map((cdc, cdcIndex) => ({
+            title: `CDC Data ${cdcIndex + 1}`,
+            path: `/caseInfo/${caseNumber}/vehicle/${vehicleIndex}/CDCdata/${cdcIndex + 1}`,
+            icon: <IoIcons.IoIosPaper />,
+        }));
+
         return {
             title: `Vehicle ${vehicleIndex}`,
-            icon: <AiIcons.AiFillHome />,
+            icon: <AiIcons.AiFillCar />,
             iconClosed: <RiIcons.RiArrowDownSFill />,
             iconOpened: <RiIcons.RiArrowUpSFill />,
             subNav: [
@@ -31,11 +38,9 @@ export const SideBarData = (caseNumber) => {
                     path: `/caseInfo/${caseNumber}/vehicle/${vehicleIndex}/Specifications`,
                     icon: <IoIcons.IoIosPaper />,
                 },
-                {
-                    title: 'CDC Data',
-                    path: `/caseInfo/${caseNumber}/vehicle/${vehicleIndex}/CDCdata`,
-                    icon: <IoIcons.IoIosPaper />,
-                },
+
+                ...cdcDataSubNav,
+
                 {
                     title: 'Delta V',
                     path: `/caseInfo/${caseNumber}/vehicle/${vehicleIndex}/DeltaV`,
@@ -52,7 +57,7 @@ export const SideBarData = (caseNumber) => {
         {
             title: 'Crash Summary',
             // path: '/',
-            icon: <AiIcons.AiFillHome />,
+            icon: <BiIcons.BiSolidCarCrash />,
             iconClosed: <RiIcons.RiArrowDownSFill />,
             iconOpened: <RiIcons.RiArrowUpSFill />,
             subNav: [
@@ -74,7 +79,7 @@ export const SideBarData = (caseNumber) => {
         {
             title: 'Images',
             // path: `${previousPath}/Images`,
-            icon: <AiIcons.AiFillHome />,
+            icon: <AiIcons.AiFillFileImage />,
             iconClosed: <RiIcons.RiArrowDownSFill />,
             iconOpened: <RiIcons.RiArrowUpSFill />,
             subNav: [

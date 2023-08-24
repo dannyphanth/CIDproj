@@ -13,12 +13,16 @@ const createCrashCase = async (req, res) => {
 
         });
 
-        await CrashCase.save();
+        const savedCrashCase = await CrashCase.save();
 
-        res.status(201).json({ message: 'Data Submitted successfully' })
+        // Send the saved CrashCase data as the response
+        res.status(201).json(savedCrashCase);
+
     } catch (error) {
+
         console.error('Error submitting data', error);
         res.status(500).json({ error: 'internal server error' });
+
     }
 }
 
@@ -31,6 +35,106 @@ const getAllCrashCases = async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch crash cases', error });
     }
 };
+
+const getCrashCaseByFilter = async (req, res) => {
+    try {
+        // Parse query parameters from the frontend
+        const {
+            crashDate,
+            selectedVehAmountSliderValue,
+            selectedVehSeverityOptions,
+            selectedVehMakeOptions,
+            selectedVehModelOptions,
+            selectedVehYearOptions,
+            selectedVehBodyClassOptions,
+            selectedPrimaryDamageOptions,
+            selectedSecondaryDamageOptions,
+            selectedPDOFSliderValue,
+            selectedDeltaVsliderValue,
+            selectedBESsliderValue
+
+        } = req.query;
+
+        // Create a filter object based on the selected variables
+        const filter = {};
+
+        if (crashDate) {
+            filter.crash_date = crashDate;
+        }
+        if (selectedVehAmountSliderValue && selectedVehAmountSliderValue.length === 2) {
+            const [minVehAmount, maxVehAmount] = selectedVehAmountSliderValue;
+            filter['vehicle_amount'] = { $gte: minVehAmount, $lte: maxVehAmount };
+        }
+        if (selectedVehSeverityOptions && selectedVehSeverityOptions.length > 0) {
+            filter['vehicles.DV_estimated_severity'] = { $in: selectedVehSeverityOptions };
+        }
+        if (selectedVehMakeOptions && selectedVehMakeOptions.length > 0) {
+            filter['vehicles.make'] = { $in: selectedVehMakeOptions };
+        }
+        if (selectedVehModelOptions && selectedVehModelOptions.length > 0) {
+            filter['vehicles.model'] = { $in: selectedVehModelOptions };
+        }
+        if (selectedVehYearOptions && selectedVehYearOptions.length > 0) {
+            filter['vehicles.year'] = { $in: selectedVehYearOptions };
+        }
+        if (selectedVehBodyClassOptions && selectedVehBodyClassOptions.length > 0) {
+            filter["vehicles.body_class"] = { $in: selectedVehBodyClassOptions };
+        }
+        if (selectedPrimaryDamageOptions && selectedPrimaryDamageOptions.length > 0) {
+            filter["vehicles.cdcArr.deformation_location"] = { $in: selectedPrimaryDamageOptions };
+        }
+        if (selectedSecondaryDamageOptions && selectedSecondaryDamageOptions.length > 0) {
+            filter["vehicles.cdcArr.long_lateral"] = { $in: selectedSecondaryDamageOptions };
+        }
+
+        if (selectedDeltaVsliderValue && selectedDeltaVsliderValue.length === 2) {
+            const [minDeltaV, maxDeltaV] = selectedDeltaVsliderValue;
+            filter["vehicles.DV_total"] = { $gte: minDeltaV, $lte: maxDeltaV };
+        }
+
+        if (selectedPDOFSliderValue && selectedPDOFSliderValue.length === 2) {
+            const [minPDOF, maxPDOF] = selectedPDOFSliderValue;
+            filter["vehicles.cdcArr.force_direction"] = { $gte: minPDOF, $lte: maxPDOF };
+        }
+
+        // Filter based on selectedBESsliderValue range
+        if (selectedBESsliderValue && selectedBESsliderValue.length === 2) {
+            const [minBES, maxBES] = selectedBESsliderValue;
+            filter["vehicles.DV_barrier_equivalent_speed"] = { $gte: minBES, $lte: maxBES };
+        }
+
+
+        console.log("Filter", filter)
+        // Query the database using the filter
+        const filteredCases = await crashCasemodel.find(filter);
+
+        // Send the filtered cases as a response
+        res.json(filteredCases);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+
+};
+
+const updateCaseData = async (req, res) => {
+    try {
+        const caseData = req.body;
+
+        const caseNumber = caseData.case_number;
+
+        const crashCase = await crashCasemodel.findOneAndUpdate(
+            { case_number: caseNumber }, // Query criteria
+            caseData, // New data to update
+            { new: true } // Return the updated document
+        );
+
+        res.json({ message: 'Case data updated successfully using PATCH in controller' });
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred while updating case data' });
+    }
+}
+
 
 const getCrashCaseById = async (req, res) => {
     try {
@@ -80,4 +184,4 @@ const deleteCrashCase = async (req, res) => {
 
 };
 
-module.exports = { createCrashCase, getAllCrashCases, getCrashCaseById, deleteCrashCase };
+module.exports = { createCrashCase, getAllCrashCases, getCrashCaseById, getCrashCaseByFilter, updateCaseData, deleteCrashCase };

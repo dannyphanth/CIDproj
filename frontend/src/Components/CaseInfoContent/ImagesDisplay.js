@@ -1,12 +1,16 @@
+import React from 'react'
 import { useParams } from 'react-router-dom';
-import SideBar from '../../Components/SideBar/SideBar';
-import SummaryTable from '../../Components/CaseInfoContent/SummaryTable';
-import Header from '../../Components/Header/Header';
+import SideBar from '../SideBar/SideBar';
+import Header from '../Header/Header';
 
-const CaseInfoPage = () => {
+
+function ImagesDisplay() {
+
     const { caseNumber } = useParams();
 
+
     return (
+
         <>
             <Header />
             <div className="flex">
@@ -14,12 +18,11 @@ const CaseInfoPage = () => {
                     <SideBar caseNumber={caseNumber} />
                 </div>
                 <div className="flex-1">
-                    <SummaryTable caseNumber={caseNumber} />
+                    <h1>Feature Not Implemented Yet...</h1>
                 </div>
             </div>
         </>
-
     )
 }
 
-export default CaseInfoPage; 
+export default ImagesDisplay

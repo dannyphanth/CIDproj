@@ -6,7 +6,11 @@ module.exports = {
     darkMode: 'class',
     content: ['./src/**/*.{html,js}'],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                CIDColor: '#485b99',
+            }
+        },
     },
     plugins: [],
 }

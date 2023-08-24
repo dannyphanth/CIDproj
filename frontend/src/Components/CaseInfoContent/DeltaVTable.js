@@ -21,7 +21,7 @@ function DeltaVTable({ caseNumber }) {
 
         <div className="">
             <div className="px-4 sm:px-0 mt-2 flex flex-col items-center justify-center">
-                <h3 className="text-base font-semibold leading-7 text-gray-900">Delta V Data</h3>
+                <h3 className="text-large font-semibold leading-7 text-gray-900">Delta V Data</h3>
                 <p className="mt-1 mb-0 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
             </div>
 
@@ -34,31 +34,31 @@ function DeltaVTable({ caseNumber }) {
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Total</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.DV_total || "Unknown"}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{`${vehicle.DV_total} mph` || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">Longitudinal</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.DV_long || "Unknown"}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{`${vehicle.DV_long} mph` || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Lateral</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.DV_lateral || "Unknown"}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{`${vehicle.DV_lateral} mph` || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Energy Absorption</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.DV_energy_absorption || "Unknown"}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{`${vehicle.DV_energy_absorption} Joules` || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Impact Speed</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.DV_impact_speed || "Unknown"}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{`${vehicle.DV_impact_speed} mph` || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Moment Arm</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.DV_moment_arm || "Unknown"}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{`${vehicle.DV_moment_arm} cm` || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Barrier Equivalent Speed</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{vehicle.DV_barrier_equivalent_speed || "Unknown"}</dd>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{`${vehicle.DV_barrier_equivalent_speed} mph` || "Unknown"}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 ">
                             <dt className="text-sm font-medium leading-6 text-gray-900 ">Deformation Location</dt>

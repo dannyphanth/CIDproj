@@ -1,10 +1,70 @@
 const mongoose = require('mongoose');
 
+const cdcSchema = new mongoose.Schema({
+    general_area_of_damage: {
+        type: String,
+        required: false,
+    },
+    object_contacted_category: {
+        type: String,
+        required: false,
+    },
+    object_contacted: {
+        type: String,
+        required: false,
+    },
+    force_direction: {
+        type: Number,
+        required: false,
+    },
+    end_shift: {
+        type: String,
+        required: false,
+    },
+    clock: {
+        type: Number,
+        required: false,
+    },
+    over_underride: {
+        type: String,
+        required: false,
+    },
+    heading_angle: {
+        type: Number,
+        required: false,
+    },
+    deformation_location: {
+        type: String,
+        required: false,
+    },
+    long_lateral: {
+        type: String,
+        required: false,
+    },
+    vertical_lateral: {
+        type: String,
+        required: false,
+    },
+    distribution: {
+        type: String,
+        required: false,
+    },
+    extent: {
+        type: String,
+        required: false,
+    },
+    cdc_summary: {
+        type: String,
+        required: false,
+    },
+});
+
 const vehicleSchema = new mongoose.Schema({
 
     vin: {
         type: String,
         required: true,
+        unique: true
     },
 
     make: {
@@ -23,87 +83,18 @@ const vehicleSchema = new mongoose.Schema({
     },
 
     // CDC data for the vehicle
-    general_area_of_damage: {
-        type: String,
-        required: true,
-    },
-
-    object_contacted_category: {
-        type: String,
-        required: true,
-    },
-
-    object_contacted: {
-        type: String,
-        required: true,
-    },
-
-
-    force_direction: {
-        type: String,
-        required: true,
-    },
-
-    end_shift: {
-        type: String,
-        required: true,
-    },
-
-    clock: {
-        type: String,
-        required: true,
-    },
-
-    over_underride: {
-        type: String,
-        required: true,
-    },
-
-    heading_angle: {
-        type: String,
-        required: true,
-    },
-
-    deformation_location: {
-        type: String,
-        required: true,
-    },
-
-    long_lateral: {
-        type: String,
-        required: true,
-    },
-
-    vertical_lateral: {
-        type: String,
-        required: true,
-    },
-
-    distribution: {
-        type: String,
-        required: true,
-    },
-
-    extent: {
-        type: String,
-        required: true,
-    },
-
-    cdc_summary: {
-        type: String,
-        required: true,
-    },
+    cdcArr: [cdcSchema],
 
     //Delta V Data
 
     DV_basis: {
         type: String,
-        required: true,
+        required: false,
     },
 
     DV_total: {
-        type: String,
-        required: true,
+        type: Number,
+        required: false,
     },
 
     DV_long: {
@@ -132,16 +123,23 @@ const vehicleSchema = new mongoose.Schema({
     },
 
     DV_barrier_equivalent_speed: {
-        type: String,
+        type: Number,
         required: false,
     },
 
     DV_estimated_severity: {
         type: String,
-        required: true,
+        required: false,
     },
 
     DV_rank: {
+        type: String,
+        required: false,
+    },
+
+    //Vehicle Decode
+
+    body_class: {
         type: String,
         required: false,
     }
@@ -165,12 +163,19 @@ const caseSchema = new mongoose.Schema({
         required: true,
     },
 
+    vehicle_amount: {
+        type: Number,
+        required: false,
+    },
+
     vehicles: [vehicleSchema], // An array of vehicles with the defined schema
 
     createdAt: {
         type: Date,
         default: Date.now,
     },
+
+
 });
 
 

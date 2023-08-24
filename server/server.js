@@ -16,8 +16,17 @@ const casesRoute = require('./routes/crashCases');
 
 //MIDDLEWARES
 // app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://cid-proj.vercel.app/"],
+        methods: ["POST", "GET", "PATCH"],
+        credentials: true
+    }
+));
+
 app.use(express.json());
+
+
 
 app.use('/cases', casesRoute);
 

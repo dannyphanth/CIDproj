@@ -14,7 +14,7 @@ const fetchVehicleDecodeInfoForCase = async (caseData) => {
 
         const updatedCaseData = caseData; // You already have the updated data
         console.log("updated Case data", updatedCaseData);
-        await axios.patch(`http://localhost:5000/cases/updateCase`, updatedCaseData);
+        await axios.patch(`https://cid-proj.vercel.app/cases/updateCase`, updatedCaseData);
 
 
     } catch (error) {

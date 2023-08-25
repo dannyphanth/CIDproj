@@ -186,7 +186,7 @@ const FilterSearchForm = () => {
 
         console.log("vehicle makes", selectedVehMakeOptions)
         try {
-            const response = await axios.get('http://localhost:5000/cases/filter', {
+            const response = await axios.get('https://cid-proj.vercel.app/cases/filter', {
                 params: {
                     crashDate,
                     selectedVehAmountSliderValue,

@@ -173,7 +173,7 @@ function AddCaseForm2() {
 
             };
 
-            const response = await axios.post('http://localhost:5000/cases', formData);
+            const response = await axios.post('https://cid-proj.vercel.app/cases', formData);
 
             // Reset form inputs
             setCaseNumber('');

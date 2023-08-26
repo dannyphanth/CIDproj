@@ -12,7 +12,7 @@ export function DataProvider({ children }) {
 
     useEffect(() => {
         //Fetch data from API
-        axios.get('https://cid-proj.vercel.app/cases')
+        axios.get('https://cid-crashviewer-api.vercel.app/cases')
             .then((response) => {
                 console.log("response: ", response.data);
                 setData(response.data);

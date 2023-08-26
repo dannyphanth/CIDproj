@@ -216,7 +216,7 @@ function AddCaseForm2() {
             const vehicle_amount = caseData.vehicles.length; // Calculate the number of vehicles
             const updatedCaseData = { ...caseData, vehicle_amount }; // Update caseData with vehicleAmount
 
-            const response = await axios.patch('https://cid-proj.vercel.app/cases/updateCase', updatedCaseData); // Send PATCH request
+            const response = await axios.patch('https://cid-crashviewer-api.vercel.app/cases/updateCase', updatedCaseData); // Send PATCH request
 
             console.log('Case data updated with vehicleAmount:', response.data.message);
         } catch (error) {
@@ -238,7 +238,7 @@ function AddCaseForm2() {
 
             };
 
-            const response = await axios.post('https://cid-proj.vercel.app/cases', formData);
+            const response = await axios.post('https://cid-crashviewer-api.vercel.app/cases', formData);
 
             // Reset form inputs
             setCaseNumber('');

@@ -75,7 +75,7 @@ function AddCaseForm() {
             };
 
 
-            const response = await axios.post('https://cid-proj.vercel.app/cases', formData);
+            const response = await axios.post('https://cid-crashviewer-api.vercel.app/cases', formData);
 
             // Reset form inputs
             setCaseNumber('');

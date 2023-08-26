@@ -18,7 +18,7 @@ const casesRoute = require('./routes/crashCases');
 // app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors(
     {
-        origin: ["https://cid-crashviewer-api.vercel.app/"],
+        origin: ["https://ci-dproj.vercel.app/"],
         methods: ["POST", "GET", "PATCH"],
         credentials: true
     }

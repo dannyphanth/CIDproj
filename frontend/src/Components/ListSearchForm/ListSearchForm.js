@@ -9,16 +9,19 @@ function ListSearchForm() {
 
     const [data, setData] = useState([]);
     const [query, setQuery] = useState("");
+    const [isLoading, setIsLoading] = useState(true); // Add isLoading state
+
 
     useEffect(() => {
         //Fetch data from API
         axios.get("https://cid-crashviewer-api.vercel.app/cases")
             .then((response) => {
-                console.log("response: ", response.data);
                 setData(response.data);
+                setIsLoading(false);
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
+                setIsLoading(false);
             });
     }, []);
 
@@ -41,8 +44,13 @@ function ListSearchForm() {
 
             />
 
-            <Table data={search(data)} />
-
+            {isLoading ? (
+                <div className="m-8">
+                    <p className="mt-8 text-2xl leading-6 text-gray-700 ">Loading data...</p>
+                </div>
+            ) : (
+                <Table data={search(data)} />
+            )}
         </div>
 
     )

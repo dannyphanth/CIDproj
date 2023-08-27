@@ -6,6 +6,8 @@ import CaseInfoPage from './Views/CaseInfoPage/CaseInfoPage';
 import AddCasePage from './Views/AddCasePage/AddCasePage';
 import CaseInfoRoutes from './CaseInfoRoutes';
 
+
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {

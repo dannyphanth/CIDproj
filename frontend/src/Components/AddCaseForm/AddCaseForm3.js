@@ -467,7 +467,7 @@ function AddCaseForm2() {
                                                     min={-360}
                                                     max={360} // Pattern for values -180 to 180
                                                     onWheel={() => document.activeElement.blur()}
-                                                    title="Value must be a number between -180 and 180 or left blank"
+                                                    title="Value must be a valid number or left blank"
                                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 />
                                             </FormGroup>

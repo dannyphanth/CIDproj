@@ -692,7 +692,7 @@ function AddCaseForm2() {
                                                 value={vehicle.DV_total}
                                                 onChange={(e) => handleVehicleChange(index, 'DV_total', e.target.value)}
                                                 onWheel={() => document.activeElement.blur()}
-                                                min={0}
+                                                min={-300}
                                                 max={300}
                                                 title="Value must be a number or left blank"
                                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -706,7 +706,7 @@ function AddCaseForm2() {
                                                 value={vehicle.DV_long}
                                                 onChange={(e) => handleVehicleChange(index, 'DV_long', e.target.value)}
                                                 onWheel={() => document.activeElement.blur()}
-                                                min={0}
+                                                min={-300}
                                                 max={300}
                                                 title="Value must be a number or left blank"
                                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -721,7 +721,7 @@ function AddCaseForm2() {
                                                 value={vehicle.DV_lateral}
                                                 onChange={(e) => handleVehicleChange(index, 'DV_lateral', e.target.value)}
                                                 onWheel={() => document.activeElement.blur()}
-                                                min={0}
+                                                min={-300}
                                                 max={300}
                                                 title="Value must be a number or left blank"
                                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

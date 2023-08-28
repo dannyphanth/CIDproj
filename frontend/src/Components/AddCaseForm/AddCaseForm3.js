@@ -464,8 +464,8 @@ function AddCaseForm2() {
                                                     id="force_direction"
                                                     value={cdc.force_direction}
                                                     onChange={(e) => handleVehicleChange(index, 'force_direction', e.target.value, cdcIndex)}
-                                                    min={-180}
-                                                    max={180} // Pattern for values -180 to 180
+                                                    min={-360}
+                                                    max={360} // Pattern for values -180 to 180
                                                     onWheel={() => document.activeElement.blur()}
                                                     title="Value must be a number between -180 and 180 or left blank"
                                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
